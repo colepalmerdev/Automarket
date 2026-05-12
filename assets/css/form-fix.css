@@ -1,0 +1,127 @@
+/* Form Fix for Register Page - Ensure inputs are clickable */
+
+/* Remove any pointer-events that might be blocking inputs */
+.auth-form,
+.auth-form * {
+    pointer-events: auto !important;
+}
+
+/* Ensure form inputs are fully interactive */
+.form-input,
+.form-select {
+    pointer-events: auto !important;
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    cursor: text !important;
+    z-index: 1 !important;
+    position: relative !important;
+}
+
+/* Fix input groups */
+.input-group {
+    position: relative !important;
+    pointer-events: auto !important;
+    z-index: 1 !important;
+}
+
+.input-group i {
+    pointer-events: none !important;
+    z-index: 2 !important;
+    position: absolute !important;
+    left: 15px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+/* Adjust input padding to account for icon */
+.input-group .form-input {
+    padding-left: 45px !important;
+}
+
+.input-group .form-select {
+    padding-left: 45px !important;
+}
+
+/* Ensure labels are clickable */
+.form-label {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 1 !important;
+    position: relative !important;
+}
+
+/* Fix password toggle button */
+.password-toggle {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 2 !important;
+    position: absolute !important;
+    right: 15px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: none !important;
+    border: none !important;
+    color: var(--text-secondary) !important;
+}
+
+/* Fix checkbox */
+.checkbox-label {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 1 !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.checkbox-label input[type="checkbox"] {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 1 !important;
+    position: relative !important;
+}
+
+/* Fix form submit button */
+.form-submit {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 1 !important;
+    position: relative !important;
+}
+
+/* Remove any overlays that might be blocking clicks */
+.auth-card::before,
+.auth-card::after,
+.auth-section::before,
+.auth-section::after {
+    pointer-events: none !important;
+}
+
+/* Ensure the form is not behind any elements */
+.auth-form {
+    z-index: 10 !important;
+    position: relative !important;
+}
+
+/* Fix any glass card overlay issues */
+.glass-card {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.glass-card * {
+    position: relative !important;
+    z-index: inherit !important;
+}
+
+/* Ensure animations don't block interactions */
+.animate-fadeInUp {
+    animation-fill-mode: both !important;
+}
+
+.animate-fadeInUp * {
+    pointer-events: auto !important;
+}

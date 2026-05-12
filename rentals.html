@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rentals - AutoMarket</title>
+    <meta name="description" content="Rent premium vehicles for your temporary needs. Quality cars at competitive rates.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/enhanced-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-car"></i>
+                AutoMarket
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="browse-cars.html" class="nav-link">Buy Cars</a></li>
+                <li><a href="rentals.html" class="nav-link active">Rentals</a></li>
+                <li><a href="sell-car.html" class="nav-link">Sell Car</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <a href="login.html" class="glass-button">Login</a>
+                <a href="register.html" class="glass-button primary">Register</a>
+                <a href="dashboard.php" class="glass-button">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1>Car Rentals</h1>
+                <p>Premium vehicles for your temporary needs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="section">
+        <div class="container">
+            <div class="search-filters glass-card">
+                <form class="search-form">
+                    <div class="search-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Search rental cars..." class="form-input">
+                        </div>
+                        <button type="submit" class="glass-button primary">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                    
+                    <div class="filter-row">
+                        <div class="form-group">
+                            <select class="form-select">
+                                <option value="">All Brands</option>
+                                <option value="toyota">Toyota</option>
+                                <option value="honda">Honda</option>
+                                <option value="ford">Ford</option>
+                                <option value="bmw">BMW</option>
+                                <option value="mercedes">Mercedes-Benz</option>
+                                <option value="audi">Audi</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select class="form-select">
+                                <option value="">All Types</option>
+                                <option value="sedan">Sedan</option>
+                                <option value="suv">SUV</option>
+                                <option value="hatchback">Hatchback</option>
+                                <option value="pickup">Pickup</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" placeholder="Pickup Location" class="form-input">
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="date" class="form-input">
+                        </div>
+                        
+                        <button type="button" class="glass-button">
+                            <i class="fas fa-filter"></i> More Filters
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rental Cars Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="results-header">
+                <p>Showing <strong>24</strong> rental vehicles available</p>
+                <select class="sort-select">
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="year-new">Year: Newest First</option>
+                    <option value="rating-high">Highest Rated</option>
+                </select>
+            </div>
+            
+            <div class="car-grid">
+                <!-- Sample rental cars -->
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 Toyota Camry.png" alt="Rental Car 1">
+                        <span class="car-badge">Available</span>
+                        <span class="car-price">$120/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Toyota Camry</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Hybrid
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 Honda cr-v.png" alt="Rental Car 2">
+                        <span class="car-badge">Premium</span>
+                        <span class="car-price">$150/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Honda CR-V</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 7 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 Nissan Sentra.png" alt="Rental Car 3">
+                        <span class="car-badge">Economy</span>
+                        <span class="car-price">$80/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Nissan Sentra</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Mombasa, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 BMW 5 Series.png" alt="Rental Car 4">
+                        <span class="car-badge">Luxury</span>
+                        <span class="car-price">$200/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 BMW 5 Series</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Diesel
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 Toyota RAV 4.png" alt="Rental Car 5">
+                        <span class="car-badge">SUV</span>
+                        <span class="car-price">$180/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Toyota RAV4</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Hybrid
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> CVT
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 7 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Kisumu, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 Ford Focus.png" alt="Rental Car 6">
+                        <span class="car-badge">Available</span>
+                        <span class="car-price">$95/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Ford Focus</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Manual
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nakuru, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 mercedes benz c-class.png" alt="Rental Car 7">
+                        <span class="car-badge">Luxury</span>
+                        <span class="car-price">$250/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Mercedes-Benz C-Class</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 Mazda CX-5.png" alt="Rental Car 8">
+                        <span class="car-badge">SUV</span>
+                        <span class="car-price">$160/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Mazda CX-5</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Mombasa, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 volkwagen jetta.png" alt="Rental Car 9">
+                        <span class="car-badge">Economy</span>
+                        <span class="car-price">$85/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Volkswagen Jetta</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Eldoret, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 audi a4.png" alt="Rental Car 10">
+                        <span class="car-badge">Premium</span>
+                        <span class="car-price">$220/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Audi A4</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Diesel
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 Subaru Forester.png" alt="Rental Car 11">
+                        <span class="car-badge">SUV</span>
+                        <span class="car-price">$175/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Subaru Forester</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> CVT
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Kisumu, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 hyundai elantra.png" alt="Rental Car 12">
+                        <span class="car-badge">Economy</span>
+                        <span class="car-price">$75/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Hyundai Elantra</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nakuru, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 lexus es.png" alt="Rental Car 13">
+                        <span class="car-badge">Luxury</span>
+                        <span class="car-price">$280/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Lexus ES</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Hybrid
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 kia sportage.png" alt="Rental Car 14">
+                        <span class="car-badge">SUV</span>
+                        <span class="car-price">$145/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Kia Sportage</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Mombasa, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 nissan altima.png" alt="Rental Car 15">
+                        <span class="car-badge">Available</span>
+                        <span class="car-price">$110/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Nissan Altima</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> CVT
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Eldoret, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 toyota corolla.png" alt="Rental Car 16">
+                        <span class="car-badge">Economy</span>
+                        <span class="car-price">$70/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Toyota Corolla</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Manual
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nakuru, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 bmw x3.png" alt="Rental Car 17">
+                        <span class="car-badge">Luxury SUV</span>
+                        <span class="car-price">$320/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 BMW X3</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 honda civic.png" alt="Rental Car 18">
+                        <span class="car-badge">Sport</span>
+                        <span class="car-price">$105/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Honda Civic</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> CVT
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Mombasa, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 tesla model 3.png" alt="Rental Car 19">
+                        <span class="car-badge">Electric</span>
+                        <span class="car-price">$350/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Tesla Model 3</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-bolt"></i> Electric
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 chevrolet malibu.png" alt="Rental Car 20">
+                        <span class="car-badge">Available</span>
+                        <span class="car-price">$90/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Chevrolet Malibu</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Kisumu, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 mitsubishi outlander.png" alt="Rental Car 21">
+                        <span class="car-badge">SUV</span>
+                        <span class="car-price">$165/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Mitsubishi Outlander</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> CVT
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 7 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Eldoret, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 toyota hilux.png" alt="Rental Car 22">
+                        <span class="car-badge">Pickup</span>
+                        <span class="car-price">$190/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Toyota Hilux</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Diesel
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Manual
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nakuru, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 volvo xc60.png" alt="Rental Car 23">
+                        <span class="car-badge">Premium SUV</span>
+                        <span class="car-price">$240/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Volvo XC60</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 peugeot 308.png" alt="Rental Car 24">
+                        <span class="car-badge">Economy</span>
+                        <span class="car-price">$78/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Peugeot 308</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Diesel
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Manual
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-users"></i> 5 Seats
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Mombasa, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="glass-button" disabled>
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <span class="page-info">Page 1 of 3</span>
+                <button class="glass-button">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rental Benefits Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Rent With AutoMarket?</h2>
+                <p>Experience the best rental service in Kenya</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card glass-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Insurance Included</h3>
+                    <p>All rental cars come with comprehensive insurance coverage for your peace of mind.</p>
+                </div>
+                
+                <div class="feature-card glass-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Flexible Duration</h3>
+                    <p>Rent cars by the day, week, or month according to your needs.</p>
+                </div>
+                
+                <div class="feature-card glass-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock roadside assistance and customer support.</p>
+                </div>
+                
+                <div class="feature-card glass-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Multiple Locations</h3>
+                    <p>Pickup and drop-off available at major cities across Kenya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>AutoMarket</h3>
+                    <p>Your premium destination for buying, selling, and renting quality vehicles.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse-cars.html">Browse Cars</a></li>
+                        <li><a href="rentals.html">Rentals</a></li>
+                        <li><a href="sell-car.html">Sell Your Car</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Car Inspection</a></li>
+                        <li><a href="#">Financing</a></li>
+                        <li><a href="#">Insurance</a></li>
+                        <li><a href="#">Maintenance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +254 745 445 951</p>
+                    <p><i class="fas fa-envelope"></i> info@automarket.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Auto Street, Nairobi, Kenya</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 AutoMarket. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/script.js"></script>
+    
+    <script>
+        // Show login prompt for actions that require authentication
+        function showLoginPrompt() {
+            const message = document.createElement('div');
+            message.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.9);
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                z-index: 9999;
+                text-align: center;
+                max-width: 300px;
+            `;
+            message.innerHTML = `
+                <h3>Login Required</h3>
+                <p>Please login or register to access this feature.</p>
+                <div style="margin-top: 15px;">
+                    <button onclick="window.location.href='login.html'" style="margin-right: 10px;" class="glass-button">Login</button>
+                    <button onclick="window.location.href='register.html'" class="glass-button primary">Register</button>
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            
+            // Add backdrop
+            const backdrop = document.createElement('div');
+            backdrop.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 9998;
+            `;
+            backdrop.onclick = () => {
+                document.body.removeChild(message);
+                document.body.removeChild(backdrop);
+            };
+            
+            document.body.appendChild(backdrop);
+        }
+        
+        // Theme toggle
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            
+            const icon = this.querySelector('i');
+            icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+    </script>
+</body>
+</html>

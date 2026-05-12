@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Cars - AutoMarket</title>
+    <meta name="description" content="Browse our extensive collection of quality vehicles for sale. Find your dream car today.">
+    
+    <!-- Enhanced Styles -->
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .search-section {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            padding: 0;
+        }
+        
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .sort-select {
+            padding: 10px 15px;
+            border: none;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        .page-info {
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        
+        .car-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.05);
+            height: fit-content;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .car-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .car-card:hover .car-image img {
+            transform: scale(1.05);
+        }
+        
+        .car-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            z-index: 1;
+        }
+        
+        .car-price {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            z-index: 1;
+        }
+    </style>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/enhanced-styles.css">
+    <link rel="stylesheet" href="assets/css/additional.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-car"></i>
+                AutoMarket
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="browse-cars.html" class="nav-link active">Buy Cars</a></li>
+                <li><a href="rentals.html" class="nav-link">Rentals</a></li>
+                <li><a href="sell-car.html" class="nav-link">Sell Car</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <a href="login-direct.php" class="glass-button">Login</a>
+                <a href="register-simple.php" class="glass-button primary">Register</a>
+                <a href="dashboard.php" class="glass-button">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1>Browse Cars</h1>
+                <p>Find your perfect vehicle from our extensive collection</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="section">
+        <div class="container">
+            <div class="search-filters glass-card">
+                <form class="search-form">
+                    <div class="search-row">
+                        <div class="form-group">
+                            <input type="text" placeholder="Search by make, model, or keyword..." class="form-input">
+                        </div>
+                        <button type="submit" class="glass-button primary">
+                            <i class="fas fa-search"></i> Search
+                        </button>
+                    </div>
+                    
+                    <div class="filter-row">
+                        <div class="form-group">
+                            <select class="form-select">
+                                <option value="">All Brands</option>
+                                <option value="toyota">Toyota</option>
+                                <option value="honda">Honda</option>
+                                <option value="ford">Ford</option>
+                                <option value="bmw">BMW</option>
+                                <option value="mercedes">Mercedes-Benz</option>
+                                <option value="audi">Audi</option>
+                                <option value="tesla">Tesla</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select class="form-select">
+                                <option value="">All Types</option>
+                                <option value="sedan">Sedan</option>
+                                <option value="suv">SUV</option>
+                                <option value="hatchback">Hatchback</option>
+                                <option value="coupe">Coupe</option>
+                                <option value="pickup">Pickup</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select class="form-select">
+                                <option value="">All Fuel Types</option>
+                                <option value="petrol">Petrol</option>
+                                <option value="diesel">Diesel</option>
+                                <option value="electric">Electric</option>
+                                <option value="hybrid">Hybrid</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select class="form-select">
+                                <option value="">All Transmissions</option>
+                                <option value="manual">Manual</option>
+                                <option value="automatic">Automatic</option>
+                                <option value="cvt">CVT</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="number" placeholder="Min Price" class="form-input" min="0">
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="number" placeholder="Max Price" class="form-input" min="0">
+                        </div>
+                        
+                        <button type="button" class="glass-button">
+                            <i class="fas fa-filter"></i> More Filters
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cars Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="results-header">
+                <p>Showing <strong>24</strong> vehicles found</p>
+                <select class="sort-select">
+                    <option value="featured">Featured First</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="year-new">Year: Newest First</option>
+                    <option value="year-old">Year: Oldest First</option>
+                    <option value="mileage-low">Mileage: Low to High</option>
+                </select>
+            </div>
+            
+            <div class="car-grid">
+                <!-- Sample car listings -->
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 Mercedes-Benz E- Class.png" alt="Car 1">
+                        <span class="car-badge">Featured</span>
+                        <span class="car-price">$45,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Mercedes-Benz E-Class</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 25,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Mombasa, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 BMW 5 Series.png" alt="Car 2">
+                        <span class="car-price">$38,500</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 BMW 5 Series</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Diesel
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 22,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Mombasa, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 Toyota RAV 4.png" alt="Car 3">
+                        <span class="car-badge">New</span>
+                        <span class="car-price">$28,900</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Toyota RAV4</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Hybrid
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> CVT
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 8,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Kisumu, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 Tesla Model 3.png" alt="Car 4">
+                        <span class="car-price">$52,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Tesla Model 3</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-bolt"></i> Electric
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 5,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2021 Honda cr-v.png" alt="Car 5">
+                        <span class="car-badge">Hot Deal</span>
+                        <span class="car-price">$22,500</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2021 Honda CR-V</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2021
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 35,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nakuru, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 Audi Q7.png" alt="Car 6">
+                        <span class="car-price">$65,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Audi Q7</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Diesel
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 18,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Eldoret, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 Land Rover Discovery.png" alt="Car 7">
+                        <span class="car-badge">Premium</span>
+                        <span class="car-price">$72,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Land Rover Discovery</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Diesel
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 12,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 Volkswagen Tiguan.png" alt="Car 8">
+                        <span class="car-price">$33,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Volkswagen Tiguan</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 28,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Thika, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2021 Toyota Hilux.png" alt="Car 9">
+                        <span class="car-badge">4x4</span>
+                        <span class="car-price">$41,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2021 Toyota Hilux</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2021
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Diesel
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Manual
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 45,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Kitale, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 Subaru Forester.png" alt="Car 10">
+                        <span class="car-price">$35,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Subaru Forester</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 15,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nanyuki, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 Mazda CX-5.png" alt="Car 11">
+                        <span class="car-badge">Economy</span>
+                        <span class="car-price">$26,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Mazda CX-5</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 22,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Meru, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 Nissan X-Trail.png" alt="Car 12">
+                        <span class="car-badge">SUV</span>
+                        <span class="car-price">$29,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Nissan X-Trail</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 18,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Kericho, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 ford ranger.png" alt="Car 13">
+                        <span class="car-badge">Popular</span>
+                        <span class="car-price">$38,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Ford Ranger</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 30,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 mistubishi pajero.png" alt="Car 14">
+                        <span class="car-badge">4x4</span>
+                        <span class="car-price">$42,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Mitsubishi Pajero</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Diesel
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 32,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Mombasa, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 hyundai tucson.png" alt="Car 15">
+                        <span class="car-badge">New</span>
+                        <span class="car-price">$31,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Hyundai Tucson</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 8,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Kisumu, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2021 isuzu d-max.png" alt="Car 16">
+                        <span class="car-badge">Workhorse</span>
+                        <span class="car-price">$36,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2021 Isuzu D-Max</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2021
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Diesel
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Manual
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 55,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nakuru, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 toyota prado.png" alt="Car 17">
+                        <span class="car-badge">Luxury</span>
+                        <span class="car-price">$55,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Toyota Prado</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Diesel
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 20,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 suzuki vitara.png" alt="Car 18">
+                        <span class="car-badge">Compact</span>
+                        <span class="car-price">$24,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Suzuki Vitara</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Manual
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 30,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Eldoret, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 jeep wrangler.png" alt="Car 19">
+                        <span class="car-badge">Adventure</span>
+                        <span class="car-price">$48,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Jeep Wrangler</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Manual
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 12,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 peugeot 3008.png" alt="Car 20">
+                        <span class="car-badge">Economy</span>
+                        <span class="car-price">$19,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Peugeot 3008</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Manual
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 42,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Thika, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 honda accord.png" alt="Car 21">
+                        <span class="car-badge">Sedan</span>
+                        <span class="car-price">$27,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Honda Accord</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> CVT
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 15,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 chevrolet cruze.png" alt="Car 22">
+                        <span class="car-badge">Budget</span>
+                        <span class="car-price">$18,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Chevrolet Cruze</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 38,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nakuru, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 kia sportage.png" alt="Car 23">
+                        <span class="car-badge">Compact SUV</span>
+                        <span class="car-price">$23,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Kia Sportage</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 8,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Mombasa, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2021 toyota corolla.png" alt="Car 24">
+                        <span class="car-badge">Bestseller</span>
+                        <span class="car-price">$25,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2021 Toyota Corolla</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2021
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Manual
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 28,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="glass-button" disabled>
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <span class="page-info">Page 1 of 4</span>
+                <button class="glass-button">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>AutoMarket</h3>
+                    <p>Your premium destination for buying, selling, and renting quality vehicles.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse-cars.html">Browse Cars</a></li>
+                        <li><a href="rentals.html">Rentals</a></li>
+                        <li><a href="sell-car.html">Sell Your Car</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Car Inspection</a></li>
+                        <li><a href="#">Financing</a></li>
+                        <li><a href="#">Insurance</a></li>
+                        <li><a href="#">Maintenance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +254 745 445 951</p>
+                    <p><i class="fas fa-envelope"></i> info@automarket.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Auto Street, Nairobi, Kenya</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 AutoMarket. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/script.js"></script>
+    
+    <script>
+        // Show login prompt for actions that require authentication
+        function showLoginPrompt() {
+            const message = document.createElement('div');
+            message.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.9);
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                z-index: 9999;
+                text-align: center;
+                max-width: 300px;
+            `;
+            message.innerHTML = `
+                <h3>Login Required</h3>
+                <p>Please login or register to access this feature.</p>
+                <div style="margin-top: 15px;">
+                    <button onclick="window.location.href='login.html'" style="margin-right: 10px;" class="glass-button">Login</button>
+                    <button onclick="window.location.href='register.html'" class="glass-button primary">Register</button>
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            
+            // Add backdrop
+            const backdrop = document.createElement('div');
+            backdrop.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 9998;
+            `;
+            backdrop.onclick = () => {
+                document.body.removeChild(message);
+                document.body.removeChild(backdrop);
+            };
+            
+            document.body.appendChild(backdrop);
+        }
+        
+        // Theme toggle
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            
+            const icon = this.querySelector('i');
+            icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+    </script>
+</body>
+</html>

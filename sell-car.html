@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Car - AutoMarket</title>
+    <meta name="description" content="Sell your car quickly and safely on AutoMarket. Reach thousands of potential buyers.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/enhanced-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-car"></i>
+                AutoMarket
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="browse-cars.html" class="nav-link">Buy Cars</a></li>
+                <li><a href="rentals.html" class="nav-link">Rentals</a></li>
+                <li><a href="sell-car.html" class="nav-link active">Sell Car</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <a href="login.html" class="glass-button">Login</a>
+                <a href="register.html" class="glass-button primary">Register</a>
+                <a href="dashboard.php" class="glass-button">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1>Sell Your Car</h1>
+                <p>Reach thousands of potential buyers and sell your car quickly and safely</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sell Car Form -->
+    <section class="section">
+        <div class="container">
+            <div class="sell-form-container">
+                <div class="sell-form-card glass-card animate-fadeInUp">
+                    <div class="form-header">
+                        <h2>Vehicle Information</h2>
+                        <p>Fill in the details about your car</p>
+                    </div>
+                    
+                    <form class="sell-form">
+                        <div class="form-section">
+                            <h3>Basic Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="brand" class="form-label">Brand *</label>
+                                    <select id="brand" class="form-select" required>
+                                        <option value="">Select Brand</option>
+                                        <option value="toyota">Toyota</option>
+                                        <option value="honda">Honda</option>
+                                        <option value="ford">Ford</option>
+                                        <option value="bmw">BMW</option>
+                                        <option value="mercedes">Mercedes-Benz</option>
+                                        <option value="audi">Audi</option>
+                                        <option value="tesla">Tesla</option>
+                                        <option value="nissan">Nissan</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="model" class="form-label">Model *</label>
+                                    <input type="text" id="model" class="form-input" required placeholder="e.g., Camry, Civic, F-150">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="year" class="form-label">Year *</label>
+                                    <input type="number" id="year" class="form-input" required min="1990" max="2026" placeholder="2023">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="price" class="form-label">Price (KES) *</label>
+                                    <input type="number" id="price" class="form-input" required min="0" placeholder="2,500,000">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="mileage" class="form-label">Mileage (km) *</label>
+                                    <input type="number" id="mileage" class="form-input" required min="0" placeholder="45,000">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="fuel_type" class="form-label">Fuel Type *</label>
+                                    <select id="fuel_type" class="form-select" required>
+                                        <option value="">Select Fuel Type</option>
+                                        <option value="petrol">Petrol</option>
+                                        <option value="diesel">Diesel</option>
+                                        <option value="electric">Electric</option>
+                                        <option value="hybrid">Hybrid</option>
+                                        <option value="lpg">LPG</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="transmission" class="form-label">Transmission *</label>
+                                    <select id="transmission" class="form-select" required>
+                                        <option value="">Select Transmission</option>
+                                        <option value="manual">Manual</option>
+                                        <option value="automatic">Automatic</option>
+                                        <option value="cvt">CVT</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="body_type" class="form-label">Body Type *</label>
+                                    <select id="body_type" class="form-select" required>
+                                        <option value="">Select Body Type</option>
+                                        <option value="sedan">Sedan</option>
+                                        <option value="suv">SUV</option>
+                                        <option value="hatchback">Hatchback</option>
+                                        <option value="coupe">Coupe</option>
+                                        <option value="convertible">Convertible</option>
+                                        <option value="pickup">Pickup</option>
+                                        <option value="van">Van</option>
+                                        <option value="wagon">Wagon</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Additional Details</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="color" class="form-label">Color</label>
+                                    <input type="text" id="color" class="form-input" placeholder="e.g., White, Black, Silver">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="engine_capacity" class="form-label">Engine Capacity</label>
+                                    <input type="text" id="engine_capacity" class="form-input" placeholder="e.g., 2.0L, 1800cc">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="location" class="form-label">Location *</label>
+                                    <input type="text" id="location" class="form-input" required placeholder="e.g., Nairobi, Mombasa">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="title" class="form-label">Listing Title *</label>
+                                    <input type="text" id="title" class="form-input" required placeholder="e.g., 2023 Toyota Camry - Excellent Condition">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="description" class="form-label">Description *</label>
+                                <textarea id="description" class="form-textarea" rows="6" required placeholder="Describe your car's condition, features, maintenance history, etc."></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Photos</h3>
+                            <div class="photo-upload-area">
+                                <div class="upload-grid">
+                                    <div class="upload-slot" onclick="showLoginPrompt()">
+                                        <i class="fas fa-camera"></i>
+                                        <span>Main Photo</span>
+                                    </div>
+                                    <div class="upload-slot" onclick="showLoginPrompt()">
+                                        <i class="fas fa-camera"></i>
+                                        <span>Photo 2</span>
+                                    </div>
+                                    <div class="upload-slot" onclick="showLoginPrompt()">
+                                        <i class="fas fa-camera"></i>
+                                        <span>Photo 3</span>
+                                    </div>
+                                    <div class="upload-slot" onclick="showLoginPrompt()">
+                                        <i class="fas fa-camera"></i>
+                                        <span>Photo 4</span>
+                                    </div>
+                                    <div class="upload-slot" onclick="showLoginPrompt()">
+                                        <i class="fas fa-camera"></i>
+                                        <span>Photo 5</span>
+                                    </div>
+                                    <div class="upload-slot" onclick="showLoginPrompt()">
+                                        <i class="fas fa-plus"></i>
+                                        <span>Add More</span>
+                                    </div>
+                                </div>
+                                <p class="upload-hint">Upload high-quality photos of your car. Include exterior, interior, and engine photos.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>Seller Information</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="seller_name" class="form-label">Your Name *</label>
+                                    <input type="text" id="seller_name" class="form-input" required placeholder="John Doe">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="seller_email" class="form-label">Email *</label>
+                                    <input type="email" id="seller_email" class="form-input" required placeholder="john@example.com">
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="seller_phone" class="form-label">Phone *</label>
+                                    <input type="tel" id="seller_phone" class="form-input" required placeholder="+254 7XX XXX XXX">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="preferred_contact" class="form-label">Preferred Contact</label>
+                                    <select id="preferred_contact" class="form-select">
+                                        <option value="phone">Phone</option>
+                                        <option value="email">Email</option>
+                                        <option value="whatsapp">WhatsApp</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <div class="form-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="featured_listing">
+                                    <span class="checkmark"></span>
+                                    Feature my listing (KES 500 extra)
+                                </label>
+                            </div>
+                            
+                            <div class="form-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="terms_agreement" required>
+                                    <span class="checkmark"></span>
+                                    I agree to the <a href="#" class="link">Terms and Conditions</a> and <a href="#" class="link">Privacy Policy</a>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="glass-button" onclick="window.location.href='index.html'">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                            <button type="submit" class="glass-button primary" onclick="showLoginPrompt()">
+                                <i class="fas fa-check"></i> Submit Listing
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Selling Tips -->
+                <div class="selling-tips glass-card animate-fadeInUp">
+                    <h3>Tips for Selling Your Car</h3>
+                    <ul class="tips-list">
+                        <li>
+                            <i class="fas fa-camera"></i>
+                            <strong>Quality Photos</strong>
+                            Take clear, well-lit photos from multiple angles
+                        </li>
+                        <li>
+                            <i class="fas fa-file-alt"></i>
+                            <strong>Detailed Description</strong>
+                            Be honest about condition and include maintenance history
+                        </li>
+                        <li>
+                            <i class="fas fa-tag"></i>
+                            <strong>Competitive Pricing</strong>
+                            Research market prices for similar vehicles
+                        </li>
+                        <li>
+                            <i class="fas fa-broom"></i>
+                            <strong>Clean Vehicle</strong>
+                            Clean inside and out before taking photos
+                        </li>
+                        <li>
+                            <i class="fas fa-file-invoice"></i>
+                            <strong>Prepare Documents</strong>
+                            Have logbook, service records ready
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Sell With AutoMarket?</h2>
+                <p>The best platform to sell your car in Kenya</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card glass-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Wide Reach</h3>
+                    <p>Access thousands of potential buyers across Kenya and East Africa.</p>
+                </div>
+                
+                <div class="feature-card glass-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure Transactions</h3>
+                    <p>Safe payment processing and fraud protection for both buyers and sellers.</p>
+                </div>
+                
+                <div class="feature-card glass-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Quick Sales</h3>
+                    <p>Most cars sell within 2 weeks when priced competitively.</p>
+                </div>
+                
+                <div class="feature-card glass-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>No Hidden Fees</h3>
+                    <p>Transparent pricing with no hidden charges or commissions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>AutoMarket</h3>
+                    <p>Your premium destination for buying, selling, and renting quality vehicles.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse-cars.html">Browse Cars</a></li>
+                        <li><a href="rentals.html">Rentals</a></li>
+                        <li><a href="sell-car.html">Sell Your Car</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Car Inspection</a></li>
+                        <li><a href="#">Financing</a></li>
+                        <li><a href="#">Insurance</a></li>
+                        <li><a href="#">Maintenance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +254 745 445 951</p>
+                    <p><i class="fas fa-envelope"></i> info@automarket.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Auto Street, Nairobi, Kenya</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 AutoMarket. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/script.js"></script>
+    
+    <script>
+        // Show login prompt for actions that require authentication
+        function showLoginPrompt() {
+            const message = document.createElement('div');
+            message.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.9);
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                z-index: 9999;
+                text-align: center;
+                max-width: 300px;
+            `;
+            message.innerHTML = `
+                <h3>Login Required</h3>
+                <p>Please login or register to access this feature.</p>
+                <div style="margin-top: 15px;">
+                    <button onclick="window.location.href='login.html'" style="margin-right: 10px;" class="glass-button">Login</button>
+                    <button onclick="window.location.href='register.html'" class="glass-button primary">Register</button>
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            
+            // Add backdrop
+            const backdrop = document.createElement('div');
+            backdrop.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 9998;
+            `;
+            backdrop.onclick = () => {
+                document.body.removeChild(message);
+                document.body.removeChild(backdrop);
+            };
+            
+            document.body.appendChild(backdrop);
+        }
+        
+        // Theme toggle
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            
+            const icon = this.querySelector('i');
+            icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+    </script>
+</body>
+</html>

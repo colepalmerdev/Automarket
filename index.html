@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMarket - Premium Car Marketplace & Rentals</title>
+    <meta name="description" content="Buy, sell, and rent premium cars with confidence. Browse our extensive collection of quality vehicles.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/enhanced-styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-car"></i>
+                AutoMarket
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="browse-cars.html" class="nav-link">Buy Cars</a></li>
+                <li><a href="rentals.html" class="nav-link">Rentals</a></li>
+                <li><a href="sell-car.html" class="nav-link">Sell Car</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                
+                <a href="login-direct.php" class="glass-button">Login</a>
+                <a href="register-simple.php" class="glass-button primary">Register</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text animate-fadeInUp">
+                <h1>Drive Your Dream Car</h1>
+                <p>Discover premium vehicles for sale and rent. Experience luxury, performance, and reliability with AutoMarket.</p>
+                <div class="hero-buttons">
+                    <a href="browse-cars.html" class="glass-button primary">
+                        <i class="fas fa-search"></i> Browse Cars
+                    </a>
+                    <a href="sell-car.html" class="glass-button">
+                        <i class="fas fa-plus"></i> Sell Your Car
+                    </a>
+                    <a href="rentals.html" class="glass-button">
+                        <i class="fas fa-calendar"></i> Rent a Car
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image animate-fadeIn">
+                <img src="images/2023 Mercedes-Benz E- Class.png" alt="Premium Luxury Car">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose AutoMarket?</h2>
+                <p>Your trusted partner for all automotive needs</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card glass-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Verified Listings</h3>
+                    <p>All vehicles are thoroughly inspected and verified by our expert team.</p>
+                </div>
+                
+                <div class="feature-card glass-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Secure Transactions</h3>
+                    <p>Safe and secure payment processing with multiple payment options.</p>
+                </div>
+                
+                <div class="feature-card glass-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support for all your queries and concerns.</p>
+                </div>
+                
+                <div class="feature-card glass-card animate-fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Quick and reliable delivery options for purchased vehicles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Cars Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Cars for Sale</h2>
+                <p>Premium vehicles handpicked by our experts</p>
+            </div>
+            
+            <div class="car-grid">
+                <!-- Sample featured cars (static for HTML version) -->
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 Mercedes-Benz E- Class.png" alt="Featured Car 1">
+                        <span class="car-badge">Featured</span>
+                        <span class="car-price">$45,000</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Mercedes-Benz E-Class</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 15,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 BMW 5 Series.png" alt="Featured Car 2">
+                        <span class="car-badge">Featured</span>
+                        <span class="car-price">$38,500</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 BMW 5 Series</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Diesel
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 22,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Mombasa, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 Toyota RAV 4.png" alt="Featured Car 3">
+                        <span class="car-badge">Featured</span>
+                        <span class="car-price">$28,900</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Toyota RAV4</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Hybrid
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> CVT
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i> 8,000 km
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Kisumu, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Contact</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="browse-cars.html" class="glass-button primary">View All Cars</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rental Cars Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Available for Rental</h2>
+                <p>Premium vehicles for your temporary needs</p>
+            </div>
+            
+            <div class="car-grid">
+                <!-- Sample rental cars (static for HTML version) -->
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2023 Toyota Camry.png" alt="Rental Car 1">
+                        <span class="car-badge">Available</span>
+                        <span class="car-price">$120/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2023 Toyota Camry</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2023
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Hybrid
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-dollar-sign"></i> $120/day
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="car-card animate-fadeInUp">
+                    <div class="car-image">
+                        <img src="images/2022 Honda cr-v.png" alt="Rental Car 2">
+                        <span class="car-badge">Available</span>
+                        <span class="car-price">$150/day</span>
+                    </div>
+                    <div class="car-details">
+                        <h3 class="car-title">2022 Honda CR-V</h3>
+                        <div class="car-specs">
+                            <span class="spec-item">
+                                <i class="fas fa-calendar"></i> 2022
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-gas-pump"></i> Petrol
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-cog"></i> Automatic
+                            </span>
+                            <span class="spec-item">
+                                <i class="fas fa-dollar-sign"></i> $150/day
+                            </span>
+                        </div>
+                        <div class="car-location">
+                            <i class="fas fa-map-marker-alt"></i> Nairobi, Kenya
+                        </div>
+                        <div class="car-actions">
+                            <button class="glass-button" onclick="showLoginPrompt()">View Details</button>
+                            <button class="glass-button primary" onclick="showLoginPrompt()">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="rentals.html" class="glass-button primary">View All Rentals</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card glass-card animate-fadeInUp">
+                    <div class="stat-value">500+</div>
+                    <div class="stat-label">Cars Available</div>
+                </div>
+                <div class="stat-card glass-card animate-fadeInUp">
+                    <div class="stat-value">1000+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-card glass-card animate-fadeInUp">
+                    <div class="stat-value">50+</div>
+                    <div class="stat-label">Car Brands</div>
+                </div>
+                <div class="stat-card glass-card animate-fadeInUp">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>AutoMarket</h3>
+                    <p>Your premium destination for buying, selling, and renting quality vehicles.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="browse-cars.html">Browse Cars</a></li>
+                        <li><a href="rentals.html">Rentals</a></li>
+                        <li><a href="sell-car.html">Sell Your Car</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Car Inspection</a></li>
+                        <li><a href="#">Financing</a></li>
+                        <li><a href="#">Insurance</a></li>
+                        <li><a href="#">Maintenance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +254 745 445 951</p>
+                    <p><i class="fas fa-envelope"></i> info@automarket.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Auto Street, Nairobi, Kenya</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 AutoMarket. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/script.js"></script>
+    
+    <script>
+        // Show login prompt for actions that require authentication
+        function showLoginPrompt() {
+            const message = document.createElement('div');
+            message.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.9);
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                z-index: 9999;
+                text-align: center;
+                max-width: 300px;
+            `;
+            message.innerHTML = `
+                <h3>Login Required</h3>
+                <p>Please login or register to access this feature.</p>
+                <div style="margin-top: 15px;">
+                    <button onclick="window.location.href='login.html'" style="margin-right: 10px;" class="glass-button">Login</button>
+                    <button onclick="window.location.href='register.html'" class="glass-button primary">Register</button>
+                </div>
+            `;
+            
+            document.body.appendChild(message);
+            
+            // Add backdrop
+            const backdrop = document.createElement('div');
+            backdrop.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 9998;
+            `;
+            backdrop.onclick = () => {
+                document.body.removeChild(message);
+                document.body.removeChild(backdrop);
+            };
+            
+            document.body.appendChild(backdrop);
+        }
+        
+        // Theme toggle
+        document.getElementById('theme-toggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            
+            const icon = this.querySelector('i');
+            icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+    </script>
+</body>
+</html>

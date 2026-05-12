@@ -1,0 +1,643 @@
+<!--<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - AutoMarket</title>
+    <meta name="description" content="Create your AutoMarket account to start buying, selling, or renting vehicles">
+-->
+    <!-- Fonts -->
+    <!--<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">-->
+    
+    <!-- Font Awesome -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">-->
+    
+    <!-- CSS -->
+    <!--<link rel="stylesheet" href="assets/css/style.css">-->
+    <!--<link rel="stylesheet" href="assets/css/enhanced-styles.css">-->
+    <!--<link rel="stylesheet" href="assets/css/form-fix.css">
+    
+    <style>
+        /* Additional styles for HTML registration page */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .form-submit.loading .button-text {
+            display: none;
+        }
+        
+        .form-submit.loading .spinner {
+            display: inline-block;
+        }
+        
+        .spinner {
+            display: none;
+        }
+        
+        .alert {
+            margin-bottom: 20px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .alert-error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+        }
+        
+        .alert-success {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .password-strength {
+            margin-top: 5px;
+            height: 4px;
+            border-radius: 2px;
+            background: #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .password-strength-bar {
+            height: 100%;
+            transition: width 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .strength-weak { background: #ef4444; width: 33%; }
+        .strength-medium { background: #f59e0b; width: 66%; }
+        .strength-strong { background: #22c55e; width: 100%; }
+    </style>
+</head>
+<body class="auth-page">   -->
+    <!-- Navigation -->
+<!--    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-car"></i>
+                AutoMarket
+            </a>
+            
+            <div class="nav-actions">
+                <a href="login.html" class="glass-button">Login</a>
+                <a href="register.html" class="glass-button primary">Register</a>
+                <a href="dashboard.php" class="glass-button">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </a>
+            </div>
+        </div>
+    </nav>
+-->
+    <!-- Register Section -->
+<!--  <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-card glass-card animate-fadeInUp">
+                    <div class="auth-header">
+                        <h2>Create Account</h2>
+                        <p>Join AutoMarket and start your journey</p>
+                    </div>-->
+                    
+                    <!-- Alert container for dynamic messages -->
+<!--                    <div id="alert-container"></div>
+                    
+                    <form id="register-form" class="auth-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="first_name" class="form-label">First Name</label>
+                                <div class="input-group">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="first_name" name="first_name" class="form-input" required 
+                                           placeholder="First name">
+                                </div>
+                                <span class="form-error" id="first_name-error"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="last_name" class="form-label">Last Name</label>
+                                <div class="input-group">
+                                    <i class="fas fa-user"></i>
+                                    <input type="text" id="last_name" name="last_name" class="form-input" required 
+                                           placeholder="Last name">
+                                </div>
+                                <span class="form-error" id="last_name-error"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="email" name="email" class="form-input" required 
+                                       placeholder="Enter your email">
+                            </div>
+                            <span class="form-error" id="email-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <div class="input-group">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="phone" name="phone" class="form-input" 
+                                       placeholder="Enter your phone number">
+                            </div>
+                            <span class="form-error" id="phone-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="role" class="form-label">Account Type</label>
+                            <div class="input-group">
+                                <i class="fas fa-user-tag"></i>
+                                <select id="role" name="role" class="form-select" required>
+                                    <option value="">Select account type</option>
+                                    <option value="buyer">Buyer</option>
+                                    <option value="seller">Seller</option>
+                                    <option value="rental_customer">Rental Customer</option>
+                                </select>
+                            </div>
+                            <span class="form-error" id="role-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="password" name="password" class="form-input" required 
+                                       placeholder="Create a password" minlength="8">
+                                <button type="button" class="password-toggle" id="password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="password-strength" id="password-strength">
+                                <div class="password-strength-bar" id="strength-bar"></div>
+                            </div>
+                            <small class="form-hint">Password must be at least 8 characters long</small>
+                            <span class="form-error" id="password-error"></span>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirm_password" class="form-label">Confirm Password</label>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="confirm_password" name="confirm_password" class="form-input" required 
+                                       placeholder="Confirm your password">
+                                <button type="button" class="password-toggle" id="confirm-password-toggle">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <span class="form-error" id="confirm_password-error"></span>
+                        </div>
+                        
+                        <div class="form-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="terms" id="terms" required>
+                                <span class="checkmark"></span>
+                                I agree to <a href="terms.html" target="_blank">Terms and Conditions</a>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="form-submit" id="register-button">
+                            <span class="button-text">Create Account</span>
+                            <div class="spinner"></div>
+                        </button>
+                    </form>
+                    
+                    <div class="auth-divider">
+                        <span>OR</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button class="social-button google" id="google-register">
+                            <i class="fab fa-google"></i>
+                            <span>Sign up with Google</span>
+                        </button>
+                        <button class="social-button facebook" id="facebook-register">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Sign up with Facebook</span>
+                        </button>
+                    </div>
+                    
+                    <div class="auth-footer">
+                        <p>Already have an account? <a href="login.html">Login here</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+
+
+    <!-- Footer -->
+   <!-- <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 AutoMarket. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>-->
+
+
+    <!-- JavaScript -->
+  <!--  <script src="assets/js/script.js"></script>
+    
+    <script>
+        // Registration functionality
+        class RegistrationHandler {
+            constructor() {
+                this.form = document.getElementById('register-form');
+                this.registerButton = document.getElementById('register-button');
+                this.alertContainer = document.getElementById('alert-container');
+                this.passwordToggle = document.getElementById('password-toggle');
+                this.confirmPasswordToggle = document.getElementById('confirm-password-toggle');
+                this.passwordInput = document.getElementById('password');
+                this.confirmPasswordInput = document.getElementById('confirm_password');
+                
+                this.init();
+            }
+            
+            init() {
+                // Form submission
+                this.form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleRegistration();
+                });
+                
+                // Password toggles
+                this.passwordToggle.addEventListener('click', () => {
+                    this.togglePassword('password', 'password-toggle');
+                });
+                
+                this.confirmPasswordToggle.addEventListener('click', () => {
+                    this.togglePassword('confirm_password', 'confirm-password-toggle');
+                });
+                
+                // Password strength checker
+                this.passwordInput.addEventListener('input', () => {
+                    this.checkPasswordStrength();
+                    this.clearFieldError('password');
+                });
+                
+                // Real-time password match validation
+                this.confirmPasswordInput.addEventListener('input', () => {
+                    this.validatePasswordMatch();
+                    this.clearFieldError('confirm_password');
+                });
+                
+                // Social registration buttons
+                document.getElementById('google-register').addEventListener('click', () => {
+                    this.handleSocialRegistration('google');
+                });
+                
+                document.getElementById('facebook-register').addEventListener('click', () => {
+                    this.handleSocialRegistration('facebook');
+                });
+                
+                // Clear errors on input
+                ['first_name', 'last_name', 'email', 'phone', 'role'].forEach(field => {
+                    document.getElementById(field).addEventListener('input', () => {
+                        this.clearFieldError(field);
+                    });
+                });
+            }
+            
+            togglePassword(fieldId, toggleId) {
+                const input = document.getElementById(fieldId);
+                const toggle = document.getElementById(toggleId);
+                const type = input.type === 'password' ? 'text' : 'password';
+                input.type = type;
+                
+                const icon = toggle.querySelector('i');
+                icon.className = type === 'password' ? 'fas fa-eye' : 'fas fa-eye-slash';
+            }
+            
+            checkPasswordStrength() {
+                const password = this.passwordInput.value;
+                const strengthBar = document.getElementById('strength-bar');
+                
+                if (!password) {
+                    strengthBar.className = 'password-strength-bar';
+                    return;
+                }
+                
+                let strength = 0;
+                
+                // Length check
+                if (password.length >= 8) strength++;
+                if (password.length >= 12) strength++;
+                
+                // Complexity checks
+                if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+                if (/[0-9]/.test(password)) strength++;
+                if (/[^a-zA-Z0-9]/.test(password)) strength++;
+                
+                strengthBar.className = 'password-strength-bar';
+                
+                if (strength <= 2) {
+                    strengthBar.classList.add('strength-weak');
+                } else if (strength <= 3) {
+                    strengthBar.classList.add('strength-medium');
+                } else {
+                    strengthBar.classList.add('strength-strong');
+                }
+            }
+            
+            validatePasswordMatch() {
+                const password = this.passwordInput.value;
+                const confirmPassword = this.confirmPasswordInput.value;
+                
+                if (confirmPassword) {
+                    if (password !== confirmPassword) {
+                        this.confirmPasswordInput.style.borderColor = '#ef4444';
+                        this.showFieldError('confirm_password', 'Passwords do not match');
+                    } else {
+                        this.confirmPasswordInput.style.borderColor = '#22c55e';
+                        this.clearFieldError('confirm_password');
+                    }
+                }
+            }
+            
+            validateForm() {
+                let isValid = true;
+                const formData = new FormData(this.form);
+                
+                // Clear previous errors
+                this.clearAllErrors();
+                
+                // First name validation
+                const firstName = formData.get('first_name').trim();
+                if (!firstName) {
+                    this.showFieldError('first_name', 'First name is required');
+                    isValid = false;
+                } else if (firstName.length < 2) {
+                    this.showFieldError('first_name', 'First name must be at least 2 characters');
+                    isValid = false;
+                }
+                
+                // Last name validation
+                const lastName = formData.get('last_name').trim();
+                if (!lastName) {
+                    this.showFieldError('last_name', 'Last name is required');
+                    isValid = false;
+                } else if (lastName.length < 2) {
+                    this.showFieldError('last_name', 'Last name must be at least 2 characters');
+                    isValid = false;
+                }
+                
+                // Email validation
+                const email = formData.get('email').trim();
+                if (!email) {
+                    this.showFieldError('email', 'Email is required');
+                    isValid = false;
+                } else if (!this.isValidEmail(email)) {
+                    this.showFieldError('email', 'Please enter a valid email address');
+                    isValid = false;
+                }
+                
+                // Phone validation (optional but if provided, should be valid)
+                const phone = formData.get('phone').trim();
+                if (phone && !this.isValidPhone(phone)) {
+                    this.showFieldError('phone', 'Please enter a valid phone number');
+                    isValid = false;
+                }
+                
+                // Role validation
+                const role = formData.get('role');
+                if (!role) {
+                    this.showFieldError('role', 'Please select an account type');
+                    isValid = false;
+                }
+                
+                // Password validation
+                const password = formData.get('password');
+                if (!password) {
+                    this.showFieldError('password', 'Password is required');
+                    isValid = false;
+                } else if (password.length < 8) {
+                    this.showFieldError('password', 'Password must be at least 8 characters long');
+                    isValid = false;
+                }
+                
+                // Confirm password validation
+                const confirmPassword = formData.get('confirm_password');
+                if (!confirmPassword) {
+                    this.showFieldError('confirm_password', 'Please confirm your password');
+                    isValid = false;
+                } else if (password !== confirmPassword) {
+                    this.showFieldError('confirm_password', 'Passwords do not match');
+                    isValid = false;
+                }
+                
+                // Terms validation
+                const terms = formData.get('terms');
+                if (!terms) {
+                    this.showAlert('You must agree to the terms and conditions', 'error');
+                    isValid = false;
+                }
+                
+                return isValid;
+            }
+            
+            isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            isValidPhone(phone) {
+                const phoneRegex = /^[\d\s\-\+\(\)]+$/;
+                return phoneRegex.test(phone) && phone.replace(/\D/g, '').length >= 10;
+            }
+            
+            showFieldError(field, message) {
+                const errorElement = document.getElementById(`${field}-error`);
+                if (errorElement) {
+                    errorElement.textContent = message;
+                    errorElement.style.display = 'block';
+                }
+            }
+            
+            clearFieldError(field) {
+                const errorElement = document.getElementById(`${field}-error`);
+                if (errorElement) {
+                    errorElement.textContent = '';
+                    errorElement.style.display = 'none';
+                }
+            }
+            
+            clearAllErrors() {
+                ['first_name', 'last_name', 'email', 'phone', 'role', 'password', 'confirm_password'].forEach(field => {
+                    this.clearFieldError(field);
+                });
+                this.clearAlerts();
+            }
+            
+            showAlert(message, type = 'error') {
+                const alertDiv = document.createElement('div');
+                alertDiv.className = `alert alert-${type}`;
+                
+                const icon = type === 'error' ? 'fa-exclamation-circle' : 'fa-check-circle';
+                alertDiv.innerHTML = `
+                    <i class="fas ${icon}"></i>
+                    <span>${message}</span>
+                `;
+                
+                this.alertContainer.innerHTML = '';
+                this.alertContainer.appendChild(alertDiv);
+                
+                // Auto-hide success messages
+                if (type === 'success') {
+                    setTimeout(() => {
+                        this.clearAlerts();
+                    }, 5000);
+                }
+            }
+            
+            clearAlerts() {
+                this.alertContainer.innerHTML = '';
+            }
+            
+            setLoading(loading) {
+                if (loading) {
+                    this.registerButton.classList.add('loading');
+                    this.registerButton.disabled = true;
+                } else {
+                    this.registerButton.classList.remove('loading');
+                    this.registerButton.disabled = false;
+                }
+            }
+            
+            async handleRegistration() {
+                if (!this.validateForm()) {
+                    return;
+                }
+                
+                const formData = new FormData(this.form);
+                const data = {
+                    first_name: formData.get('first_name'),
+                    last_name: formData.get('last_name'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    password: formData.get('password'),
+                    confirm_password: formData.get('confirm_password'),
+                    role: formData.get('role') || 'buyer',
+                    terms: formData.get('terms') ? '1' : '0'
+                };
+                
+                this.setLoading(true);
+                
+                try {
+                    const response = await fetch('register-api.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    
+                    const result = await response.json();
+                    console.log('Registration API Response:', result);
+                    
+                    if (result.success) {
+                        this.showAlert(result.message || 'Registration successful! Redirecting to login page...', 'success');
+                        setTimeout(() => {
+                            window.location.href = result.redirect || 'login.html';
+                        }, 2000);
+                    } else {
+                        this.showAlert(result.message || 'Registration failed. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Registration error:', error);
+                    this.showAlert('Network error. Please check your connection and try again.');
+                } finally {
+                    this.setLoading(false);
+                }
+            }
+            
+            handleSocialRegistration(provider) {
+                // Placeholder for social registration
+                this.showAlert(`${provider.charAt(0).toUpperCase() + provider.slice(1)} registration coming soon!`, 'error');
+                
+                // In a real implementation, you would redirect to the OAuth provider
+                // window.location.href = `auth/${provider}.php`;
+            }
+        }
+        
+        // Initialize registration handler when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new RegistrationHandler();
+        });
+        
+        // Utility functions for compatibility with existing script.js
+        function showToast(message, type = 'info') {
+            // Create a simple toast notification
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                background: ${type === 'warning' ? '#f59e0b' : '#3b82f6'};
+                color: white;
+                border-radius: 8px;
+                z-index: 9999;
+                animation: slideIn 0.3s ease;
+            `;
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
+        
+        // Add slide animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
+-->
