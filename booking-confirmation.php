@@ -30,10 +30,10 @@ if (!$booking) {
 
 // Send confirmation email
 if ($booking['status'] === 'pending') {
-    $subject = "Booking Confirmation - AutoMarket Pro";
+    $subject = "Booking Confirmation - AutoMarket";
     $message = "
         <h2>Booking Confirmed!</h2>
-        <p>Thank you for booking with AutoMarket Pro. Here are your booking details:</p>
+        <p>Thank you for booking with AutoMarket. Here are your booking details:</p>
         
         <h3>Vehicle Details</h3>
         <p><strong>Car:</strong> {$booking['car_title']}</p>
@@ -60,7 +60,7 @@ if ($booking['status'] === 'pending') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Confirmation - AutoMarket Pro</title>
+    <title>Booking Confirmation - AutoMarket</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -78,7 +78,7 @@ if ($booking['status'] === 'pending') {
         <div class="nav-container">
             <a href="index.php" class="logo">
                 <i class="fas fa-car"></i>
-                AutoMarket Pro
+                AutoMarket
             </a>
             
             <ul class="nav-menu">
@@ -279,7 +279,7 @@ if ($booking['status'] === 'pending') {
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
-                <p>&copy; 2024 AutoMarket Pro. All rights reserved.</p>
+                <p>&copy; 2026 AutoMarket. All rights reserved.</p>
             </div>
         </div>
     </footer>

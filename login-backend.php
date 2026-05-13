@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($user['role'] === 'admin') {
                 header('Location: admin/dashboard.php');
             } else {
-                header('Location: dashboard.php');
+                header('Location: admin/dashboard.php');
             }
             exit();
         } else {
@@ -65,7 +65,7 @@ if (isset($_COOKIE['remember_token']) && !isLoggedIn()) {
             $_SESSION['user_name'] = $user['first_name'] . ' ' . $user['last_name'];
             $_SESSION['user_role'] = $user['role'];
             
-            header('Location: dashboard.php');
+            header('Location: admin/dashboard.php');
             exit();
         }
     } catch(PDOException $e) {

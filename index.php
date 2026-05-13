@@ -49,7 +49,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoMarket Pro - Premium Car Marketplace & Rentals</title>
+    <title>AutoMarket - Premium Car Marketplace & Rentals</title>
     <meta name="description" content="Buy, sell, and rent premium cars with confidence. Browse our extensive collection of quality vehicles.">
     
     <!-- Fonts -->
@@ -67,7 +67,7 @@ try {
         <div class="nav-container">
             <a href="index.php" class="logo">
                 <i class="fas fa-car"></i>
-                AutoMarket Pro
+                AutoMarket
             </a>
             
             <ul class="nav-menu">
@@ -104,7 +104,7 @@ try {
         <div class="hero-content">
             <div class="hero-text animate-fadeInUp">
                 <h1>Drive Your Dream Car</h1>
-                <p>Discover premium vehicles for sale and rent. Experience luxury, performance, and reliability with AutoMarket Pro.</p>
+                <p>Discover premium vehicles for sale and rent. Experience luxury, performance, and reliability with AutoMarket.</p>
                 <div class="hero-buttons">
                     <a href="browse-cars.php" class="glass-button primary">
                         <i class="fas fa-search"></i> Browse Cars
@@ -119,7 +119,7 @@ try {
             </div>
             
             <div class="hero-image animate-fadeIn">
-                <img src="assets/images/hero-car.jpg" alt="Premium Luxury Car">
+                <img src="images/2022 BMW 5 Series.png" alt="Premium Luxury Car">
             </div>
         </div>
     </section>
@@ -128,7 +128,7 @@ try {
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <h2>Why Choose AutoMarket Pro?</h2>
+                <h2>Why Choose AutoMarket?</h2>
                 <p>Your trusted partner for all automotive needs</p>
             </div>
             
@@ -181,7 +181,7 @@ try {
                 <?php foreach ($featured_cars as $car): ?>
                     <div class="car-card animate-fadeInUp">
                         <div class="car-image">
-                            <img src="<?php echo $car['images'] ? json_decode($car['images'])[0] : 'assets/images/default-car.jpg'; ?>" alt="<?php echo htmlspecialchars($car['title']); ?>">
+                            <img src="<?php echo $car['images'] ? json_decode($car['images'])[0] : 'images/2022 BMW 5 Series.png'; ?>" alt="<?php echo htmlspecialchars($car['title']); ?>">
                             <span class="car-badge">Featured</span>
                             <span class="car-price"><?php echo formatPrice($car['price']); ?></span>
                         </div>
@@ -233,7 +233,7 @@ try {
                 <?php foreach ($rental_cars as $car): ?>
                     <div class="car-card animate-fadeInUp">
                         <div class="car-image">
-                            <img src="<?php echo $car['images'] ? json_decode($car['images'])[0] : 'assets/images/default-car.jpg'; ?>" alt="<?php echo htmlspecialchars($car['title']); ?>">
+                            <img src="<?php echo $car['images'] ? json_decode($car['images'])[0] : 'images/2022 kia sportage.png'; ?>" alt="<?php echo htmlspecialchars($car['title']); ?>">
                             <span class="car-badge">Available</span>
                             <span class="car-price">$<?php echo number_format($car['daily_rate'], 2); ?>/day</span>
                         </div>
@@ -301,7 +301,7 @@ try {
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h3>AutoMarket Pro</h3>
+                    <h3>AutoMarket</h3>
                     <p>Your premium destination for buying, selling, and renting quality vehicles.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
@@ -333,14 +333,14 @@ try {
                 
                 <div class="footer-section">
                     <h4>Contact Info</h4>
-                    <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
-                    <p><i class="fas fa-envelope"></i> info@automarketpro.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Auto Street, City, Country</p>
+                    <p><i class="fas fa-phone"></i> +254 745 554 951</p>
+                    <p><i class="fas fa-envelope"></i> info@automarket.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Auto Street, Nairobi, Kenya</p>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 AutoMarket Pro. All rights reserved.</p>
+                <p>&copy; 2026 AutoMarket. All rights reserved.</p>
             </div>
         </div>
     </footer>

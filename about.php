@@ -8,8 +8,8 @@ require_once 'includes/functions.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - AutoMarket Pro</title>
-    <meta name="description" content="Learn about AutoMarket Pro - your trusted partner for buying, selling, and renting quality vehicles.">
+    <title>About Us - AutoMarket</title>
+    <meta name="description" content="Learn about AutoMarket - your trusted partner for buying, selling, and renting quality vehicles.">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@ require_once 'includes/functions.php';
         <div class="nav-container">
             <a href="index.php" class="logo">
                 <i class="fas fa-car"></i>
-                AutoMarket Pro
+                AutoMarket 
             </a>
             
             <ul class="nav-menu">
@@ -62,7 +62,7 @@ require_once 'includes/functions.php';
     <section class="page-header">
         <div class="container">
             <div class="page-header-content">
-                <h1>About AutoMarket Pro</h1>
+                <h1>About AutoMarket</h1>
                 <p>Your trusted partner in the automotive marketplace since 2020</p>
             </div>
         </div>
@@ -74,9 +74,9 @@ require_once 'includes/functions.php';
             <div class="about-content">
                 <div class="about-text animate-fadeInUp">
                     <h2>Our Story</h2>
-                    <p>Founded in 2020, AutoMarket Pro has quickly become the leading online marketplace for buying, selling, and renting quality vehicles. We started with a simple mission: to make the car buying and selling process transparent, secure, and convenient for everyone.</p>
+                    <p>Founded in 2020, AutoMarket has quickly become the leading online marketplace for buying, selling, and renting quality vehicles. We started with a simple mission: to make the car buying and selling process transparent, secure, and convenient for everyone.</p>
                     
-                    <p>Our platform connects thousands of buyers and sellers across the country, offering a wide selection of vehicles from trusted dealerships and private sellers. Whether you're looking for your dream car, selling your current vehicle, or need a rental for a special occasion, AutoMarket Pro is here to help.</p>
+                    <p>Our platform connects thousands of buyers and sellers across the country, offering a wide selection of vehicles from trusted dealerships and private sellers. Whether you're looking for your dream car, selling your current vehicle, or need a rental for a special occasion, AutoMarket is here to help.</p>
                     
                     <div class="stats-row">
                         <div class="stat-item">
@@ -99,7 +99,7 @@ require_once 'includes/functions.php';
                 </div>
                 
                 <div class="about-image animate-fadeIn">
-                    <img src="assets/images/about-showroom.jpg" alt="AutoMarket Pro Showroom">
+                    <img src="assets/images/showroom.jpg" alt="AutoMarket Showroom">
                 </div>
             </div>
         </div>
@@ -177,7 +177,7 @@ require_once 'includes/functions.php';
         <div class="container">
             <div class="section-header">
                 <h2>Meet Our Team</h2>
-                <p>The passionate people behind AutoMarket Pro</p>
+                <p>The passionate people behind AutoMarket</p>
             </div>
             
             <div class="team-grid">
@@ -187,7 +187,7 @@ require_once 'includes/functions.php';
                     </div>
                     <h3>John Anderson</h3>
                     <p class="member-role">CEO & Founder</p>
-                    <p class="member-bio">With over 15 years in the automotive industry, John founded AutoMarket Pro with a vision to revolutionize car buying and selling.</p>
+                    <p class="member-bio">With over 15 years in the automotive industry, John founded AutoMarket with a vision to revolutionize car buying and selling.</p>
                     <div class="member-social">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -249,7 +249,7 @@ require_once 'includes/functions.php';
                     <div class="timeline-year">2020</div>
                     <div class="timeline-content">
                         <h3>Company Founded</h3>
-                        <p>AutoMarket Pro was established with a mission to transform the automotive marketplace.</p>
+                        <p>AutoMarket was established with a mission to transform the automotive marketplace.</p>
                     </div>
                 </div>
                 
@@ -292,7 +292,7 @@ require_once 'includes/functions.php';
     <section class="section bg-primary">
         <div class="container">
             <div class="cta-content text-center">
-                <h2>Ready to Join the AutoMarket Pro Family?</h2>
+                <h2>Ready to Join the AutoMarket Family?</h2>
                 <p>Experience the difference of working with a trusted automotive marketplace</p>
                 <div class="cta-buttons">
                     <a href="register.php" class="glass-button primary">Get Started</a>
@@ -307,7 +307,7 @@ require_once 'includes/functions.php';
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h3>AutoMarket Pro</h3>
+                    <h3>AutoMarket</h3>
                     <p>Your premium destination for buying, selling, and renting quality vehicles.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
@@ -339,14 +339,14 @@ require_once 'includes/functions.php';
                 
                 <div class="footer-section">
                     <h4>Contact Info</h4>
-                    <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
-                    <p><i class="fas fa-envelope"></i> info@automarketpro.com</p>
+                    <p><i class="fas fa-phone"></i>0745 554 951</p>
+                    <p><i class="fas fa-envelope"></i> info@automarket.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> 123 Auto Street, City, Country</p>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 AutoMarket Pro. All rights reserved.</p>
+                <p>&copy; 2026 AutoMarket. All rights reserved.</p>
             </div>
         </div>
     </footer>

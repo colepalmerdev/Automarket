@@ -25,7 +25,7 @@
             </a>
             
             <div class="nav-actions">
-                <a href="login.html" class="glass-button">Login</a>
+                <a href="login.php" class="glass-button">Login</a>
                 <a href="register-with-verification.php" class="glass-button primary">Register</a>
             </div>
         </div>
@@ -69,7 +69,7 @@
                     
                     <div class="auth-footer">
                         <p>Didn't receive email? <a href="register-with-verification.php">Try registering again</a></p>
-                        <p>Already verified? <a href="login.html">Login here</a></p>
+                        <p>Already verified? <a href="login.php">Login here</a></p>
                     </div>
                 </div>
             </div>

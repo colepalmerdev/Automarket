@@ -46,8 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - AutoMarket Pro</title>
-    <meta name="description" content="Get in touch with AutoMarket Pro. We're here to help with all your automotive needs.">
+    <title>Contact Us - AutoMarket</title>
+    <meta name="description" content="Get in touch with AutoMarket. We're here to help with all your automotive needs.">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="nav-container">
             <a href="index.php" class="logo">
                 <i class="fas fa-car"></i>
-                AutoMarket Pro
+                AutoMarket
             </a>
             
             <ul class="nav-menu">
@@ -183,7 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                             <div class="contact-details">
                                 <h3>Phone</h3>
-                                <p><a href="tel:+12345678900">+1 234 567 8900</a></p>
+                                <p><a href="tel:+12345678900">+254 745 554 951</a></p>
                                 <p>Mon-Fri: 9:00 AM - 6:00 PM EST</p>
                             </div>
                         </div>
@@ -194,8 +194,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </div>
                             <div class="contact-details">
                                 <h3>Email</h3>
-                                <p><a href="mailto:info@automarketpro.com">info@automarketpro.com</a></p>
-                                <p><a href="mailto:support@automarketpro.com">support@automarketpro.com</a></p>
+                                <p><a href="mailto:info@automarket.com">info@automarket.com</a></p>
+                                <p><a href="mailto:support@automarket.com">support@automarket.com</a></p>
                             </div>
                         </div>
                         
@@ -206,8 +206,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class="contact-details">
                                 <h3>Office Location</h3>
                                 <p>123 Auto Street<br>
-                                City, State 12345<br>
-                                United States</p>
+                                Nairobi<br>
+                                Kenya</p>
                             </div>
                         </div>
                         
@@ -340,7 +340,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="map-placeholder">
                     <i class="fas fa-map-marked-alt"></i>
                     <p>Interactive Map</p>
-                    <small>123 Auto Street, City, State 12345</small>
+                    <small>123 Auto Street, Nairobi, Kenya</small>
                 </div>
             </div>
             
@@ -383,7 +383,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h3>AutoMarket Pro</h3>
+                    <h3>AutoMarket</h3>
                     <p>Your premium destination for buying, selling, and renting quality vehicles.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
@@ -415,14 +415,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 <div class="footer-section">
                     <h4>Contact Info</h4>
-                    <p><i class="fas fa-phone"></i> +1 234 567 8900</p>
-                    <p><i class="fas fa-envelope"></i> info@automarketpro.com</p>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Auto Street, City, Country</p>
+                    <p><i class="fas fa-phone"></i> +254 745 554 951</p>
+                    <p><i class="fas fa-envelope"></i> info@automarket.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Auto Street, Nairobi, Kenya</p>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 AutoMarket Pro. All rights reserved.</p>
+                <p>&copy; 2026 AutoMarket. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -462,7 +462,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Live Chat (placeholder)
         function startLiveChat() {
-            alert('Live chat feature coming soon! Please call us at +1 234 567 8900 for immediate assistance.');
+            alert('Live chat feature coming soon! Please call us at +254 745 554 951 for immediate assistance.');
         }
     </script>
 </body>

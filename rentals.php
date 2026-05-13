@@ -16,6 +16,396 @@ $filters = [
 // Get rental cars based on filters
 $rental_cars = searchRentalCars($pdo, $filters);
 
+// Fallback rental cars data if database is empty
+if (empty($rental_cars)) {
+    $rental_cars = [
+        [
+            'id' => 1,
+            'title' => '2023 Toyota Camry',
+            'year' => 2023,
+            'fuel_type' => 'Hybrid',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 120.00,
+            'weekly_rate' => 720.00,
+            'monthly_rate' => 2880.00,
+            'security_deposit' => 600.00,
+            'location' => 'Nairobi, Kenya',
+            'images' => json_encode(['images/2023 Toyota Camry.png']),
+            'brand_name' => 'Toyota',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 2,
+            'title' => '2022 Honda CR-V',
+            'year' => 2022,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 150.00,
+            'weekly_rate' => 900.00,
+            'monthly_rate' => 3600.00,
+            'security_deposit' => 750.00,
+            'location' => 'Nairobi, Kenya',
+            'images' => json_encode(['images/2022 Honda cr-v.png']),
+            'brand_name' => 'Honda',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 3,
+            'title' => '2023 Nissan Sentra',
+            'year' => 2023,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 80.00,
+            'weekly_rate' => 480.00,
+            'monthly_rate' => 1920.00,
+            'security_deposit' => 400.00,
+            'location' => 'Mombasa, Kenya',
+            'images' => json_encode(['images/2023 Nissan Sentra.png']),
+            'brand_name' => 'Nissan',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 4,
+            'title' => '2022 BMW 5 Series',
+            'year' => 2022,
+            'fuel_type' => 'Diesel',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 200.00,
+            'weekly_rate' => 1200.00,
+            'monthly_rate' => 4800.00,
+            'security_deposit' => 1000.00,
+            'location' => 'Nairobi, Kenya',
+            'images' => json_encode(['images/2022 BMW 5 Series.png']),
+            'brand_name' => 'BMW',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 5,
+            'title' => '2023 Toyota RAV4',
+            'year' => 2023,
+            'fuel_type' => 'Hybrid',
+            'transmission' => 'CVT',
+            'mileage' => 15000,
+            'daily_rate' => 180.00,
+            'weekly_rate' => 1080.00,
+            'monthly_rate' => 4320.00,
+            'security_deposit' => 900.00,
+            'location' => 'Kisumu, Kenya',
+            'images' => json_encode(['images/2023 Toyota RAV 4.png']),
+            'brand_name' => 'Toyota',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 6,
+            'title' => '2022 Ford Focus',
+            'year' => 2022,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'Manual',
+            'mileage' => 15000,
+            'daily_rate' => 95.00,
+            'weekly_rate' => 570.00,
+            'monthly_rate' => 2280.00,
+            'security_deposit' => 475.00,
+            'location' => 'Nakuru, Kenya',
+            'images' => json_encode(['images/2022 Ford Focus.png']),
+            'brand_name' => 'Ford',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 7,
+            'title' => '2023 Mercedes-Benz C-Class',
+            'year' => 2023,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 250.00,
+            'weekly_rate' => 1500.00,
+            'monthly_rate' => 6000.00,
+            'security_deposit' => 1250.00,
+            'location' => 'Nairobi, Kenya',
+            'images' => json_encode(['images/2023 mercedes benz c-class.png']),
+            'brand_name' => 'Mercedes-Benz',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 8,
+            'title' => '2022 Mazda CX-5',
+            'year' => 2022,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 160.00,
+            'weekly_rate' => 960.00,
+            'monthly_rate' => 3840.00,
+            'security_deposit' => 800.00,
+            'location' => 'Mombasa, Kenya',
+            'images' => json_encode(['images/2022 Mazda CX-5.png']),
+            'brand_name' => 'Mazda',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 9,
+            'title' => '2023 Volkswagen Jetta',
+            'year' => 2023,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 85.00,
+            'weekly_rate' => 510.00,
+            'monthly_rate' => 2040.00,
+            'security_deposit' => 425.00,
+            'location' => 'Eldoret, Kenya',
+            'images' => json_encode(['images/2023 volkwagen jetta.png']),
+            'brand_name' => 'Volkswagen',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 10,
+            'title' => '2022 Audi A4',
+            'year' => 2022,
+            'fuel_type' => 'Diesel',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 220.00,
+            'weekly_rate' => 1320.00,
+            'monthly_rate' => 5280.00,
+            'security_deposit' => 1100.00,
+            'location' => 'Nairobi, Kenya',
+            'images' => json_encode(['images/2022 audi a4.png']),
+            'brand_name' => 'Audi',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 11,
+            'title' => '2023 Subaru Forester',
+            'year' => 2023,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'CVT',
+            'mileage' => 15000,
+            'daily_rate' => 175.00,
+            'weekly_rate' => 1050.00,
+            'monthly_rate' => 4200.00,
+            'security_deposit' => 875.00,
+            'location' => 'Kisumu, Kenya',
+            'images' => json_encode(['images/2023 Subaru Forester.png']),
+            'brand_name' => 'Subaru',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 12,
+            'title' => '2022 Hyundai Elantra',
+            'year' => 2022,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 75.00,
+            'weekly_rate' => 450.00,
+            'monthly_rate' => 1800.00,
+            'security_deposit' => 375.00,
+            'location' => 'Nakuru, Kenya',
+            'images' => json_encode(['images/2022 hyundai elantra.png']),
+            'brand_name' => 'Hyundai',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 13,
+            'title' => '2023 Lexus ES',
+            'year' => 2023,
+            'fuel_type' => 'Hybrid',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 280.00,
+            'weekly_rate' => 1680.00,
+            'monthly_rate' => 6720.00,
+            'security_deposit' => 1400.00,
+            'location' => 'Nairobi, Kenya',
+            'images' => json_encode(['images/2023 lexus es.png']),
+            'brand_name' => 'Lexus',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 14,
+            'title' => '2022 Kia Sportage',
+            'year' => 2022,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 145.00,
+            'weekly_rate' => 870.00,
+            'monthly_rate' => 3480.00,
+            'security_deposit' => 725.00,
+            'location' => 'Mombasa, Kenya',
+            'images' => json_encode(['images/2022 kia sportage.png']),
+            'brand_name' => 'Kia',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 15,
+            'title' => '2023 Nissan Altima',
+            'year' => 2023,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'CVT',
+            'mileage' => 15000,
+            'daily_rate' => 110.00,
+            'weekly_rate' => 660.00,
+            'monthly_rate' => 2640.00,
+            'security_deposit' => 550.00,
+            'location' => 'Eldoret, Kenya',
+            'images' => json_encode(['images/2023 nissan altima.png']),
+            'brand_name' => 'Nissan',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 16,
+            'title' => '2022 Toyota Corolla',
+            'year' => 2022,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'Manual',
+            'mileage' => 15000,
+            'daily_rate' => 70.00,
+            'weekly_rate' => 420.00,
+            'monthly_rate' => 1680.00,
+            'security_deposit' => 350.00,
+            'location' => 'Nakuru, Kenya',
+            'images' => json_encode(['images/2022 toyota corolla.png']),
+            'brand_name' => 'Toyota',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 17,
+            'title' => '2023 BMW X3',
+            'year' => 2023,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 320.00,
+            'weekly_rate' => 1920.00,
+            'monthly_rate' => 7680.00,
+            'security_deposit' => 1600.00,
+            'location' => 'Nairobi, Kenya',
+            'images' => json_encode(['images/2023 bmw x3.png']),
+            'brand_name' => 'BMW',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 18,
+            'title' => '2022 Honda Civic',
+            'year' => 2022,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'CVT',
+            'mileage' => 15000,
+            'daily_rate' => 105.00,
+            'weekly_rate' => 630.00,
+            'monthly_rate' => 2520.00,
+            'security_deposit' => 525.00,
+            'location' => 'Mombasa, Kenya',
+            'images' => json_encode(['images/2022 honda civic.png']),
+            'brand_name' => 'Honda',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 19,
+            'title' => '2023 Tesla Model 3',
+            'year' => 2023,
+            'fuel_type' => 'Electric',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 350.00,
+            'weekly_rate' => 2100.00,
+            'monthly_rate' => 8400.00,
+            'security_deposit' => 1750.00,
+            'location' => 'Nairobi, Kenya',
+            'images' => json_encode(['images/2023 tesla model 3.png']),
+            'brand_name' => 'Tesla',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 20,
+            'title' => '2022 Chevrolet Malibu',
+            'year' => 2022,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 90.00,
+            'weekly_rate' => 540.00,
+            'monthly_rate' => 2160.00,
+            'security_deposit' => 450.00,
+            'location' => 'Kisumu, Kenya',
+            'images' => json_encode(['images/2022 chevrolet malibu.png']),
+            'brand_name' => 'Chevrolet',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 21,
+            'title' => '2023 Mitsubishi Outlander',
+            'year' => 2023,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'CVT',
+            'mileage' => 15000,
+            'daily_rate' => 165.00,
+            'weekly_rate' => 990.00,
+            'monthly_rate' => 3960.00,
+            'security_deposit' => 825.00,
+            'location' => 'Eldoret, Kenya',
+            'images' => json_encode(['images/2023 mitsubishi outlander.png']),
+            'brand_name' => 'Mitsubishi',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 22,
+            'title' => '2022 Toyota Hilux',
+            'year' => 2022,
+            'fuel_type' => 'Diesel',
+            'transmission' => 'Manual',
+            'mileage' => 15000,
+            'daily_rate' => 190.00,
+            'weekly_rate' => 1140.00,
+            'monthly_rate' => 4560.00,
+            'security_deposit' => 950.00,
+            'location' => 'Nakuru, Kenya',
+            'images' => json_encode(['images/2022 toyota hilux.png']),
+            'brand_name' => 'Toyota',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 23,
+            'title' => '2023 Volvo XC60',
+            'year' => 2023,
+            'fuel_type' => 'Petrol',
+            'transmission' => 'Automatic',
+            'mileage' => 15000,
+            'daily_rate' => 240.00,
+            'weekly_rate' => 1440.00,
+            'monthly_rate' => 5760.00,
+            'security_deposit' => 1200.00,
+            'location' => 'Nairobi, Kenya',
+            'images' => json_encode(['images/2023 volvo xc60.png']),
+            'brand_name' => 'Volvo',
+            'owner_name' => 'AutoMarket'
+        ],
+        [
+            'id' => 24,
+            'title' => '2022 Peugeot 308',
+            'year' => 2022,
+            'fuel_type' => 'Diesel',
+            'transmission' => 'Manual',
+            'mileage' => 15000,
+            'daily_rate' => 78.00,
+            'weekly_rate' => 468.00,
+            'monthly_rate' => 1872.00,
+            'security_deposit' => 390.00,
+            'location' => 'Mombasa, Kenya',
+            'images' => json_encode(['images/2022 peugeot 308.png']),
+            'brand_name' => 'Peugeot',
+            'owner_name' => 'AutoMarket'
+        ]
+    ];
+}
+
 // Get brands for filter dropdown
 $brands = getCarBrands($pdo);
 
@@ -33,7 +423,7 @@ $rental_cars = array_slice($rental_cars, $offset, $per_page);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car Rentals - AutoMarket Pro</title>
+    <title>Car Rentals - AutoMarket</title>
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -51,7 +441,7 @@ $rental_cars = array_slice($rental_cars, $offset, $per_page);
         <div class="nav-container">
             <a href="index.php" class="logo">
                 <i class="fas fa-car"></i>
-                AutoMarket Pro
+                AutoMarket 
             </a>
             
             <ul class="nav-menu">
@@ -77,7 +467,7 @@ $rental_cars = array_slice($rental_cars, $offset, $per_page);
                     </a>
                 <?php else: ?>
                     <a href="login.php" class="glass-button">Login</a>
-                    <a href="register.php" class="glass-button primary">Register</a>
+                    <a href="register-simple.php" class="glass-button primary">Register</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -296,7 +686,7 @@ $rental_cars = array_slice($rental_cars, $offset, $per_page);
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
-                <p>&copy; 2024 AutoMarket Pro. All rights reserved.</p>
+                <p>&copy; 2026 AutoMarket. All rights reserved.</p>
             </div>
         </div>
     </footer>

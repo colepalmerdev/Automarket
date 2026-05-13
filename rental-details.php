@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book_now'])) {
         <div class="nav-container">
             <a href="index.php" class="logo">
                 <i class="fas fa-car"></i>
-                AutoMarket Pro
+                AutoMarket
             </a>
             
             <ul class="nav-menu">
@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book_now'])) {
                     </a>
                 <?php else: ?>
                     <a href="login.php" class="glass-button">Login</a>
-                    <a href="register.php" class="glass-button primary">Register</a>
+                    <a href="register-simple.php" class="glass-button primary">Register</a>
                 <?php endif; ?>
             </div>
         </div>
@@ -170,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book_now'])) {
                     <div class="main-image">
                         <?php 
                         $images = json_decode($car['images'] ?? '[]');
-                        $main_image = !empty($images) ? $images[0] : 'assets/images/default-car.jpg';
+                        $main_image = !empty($images) ? $images[0] : 'images/2022 BMW 5 Series.png';
                         ?>
                         <img src="<?php echo htmlspecialchars($main_image); ?>" alt="<?php echo htmlspecialchars($car['title']); ?>">
                     </div>

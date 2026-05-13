@@ -119,7 +119,7 @@ try {
         
         $response['success'] = true;
         $response['message'] = 'Registration successful! Please check your email for verification.';
-        $response['redirect'] = 'login.html';
+        $response['redirect'] = 'login.php';
         
     } else {
         $response['message'] = 'Registration failed. Please try again.';

@@ -1,4 +1,4 @@
-# AutoMarket Pro - Premium Car Marketplace & Rental Platform
+# AutoMarket - Premium Car Marketplace & Rental Platform
 
 A comprehensive full-stack car marketplace and rental booking website with a premium automotive design aesthetic. Built with PHP, MySQL, HTML, CSS, and JavaScript.
 
@@ -218,8 +218,8 @@ This project is licensed under the MIT License.
 ## Support
 
 For support and inquiries, please contact:
-- Email: info@automarketpro.com
-- Phone: +1 234 567 8900
+- Email: info@automarket.com
+- Phone: +254 745 554 951
 
 ## Future Enhancements
 

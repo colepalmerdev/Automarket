@@ -2,7 +2,7 @@
 // Database Setup Script
 require_once 'includes/connect.php';
 
-echo "<h1>AutoMarket Pro - Database Setup</h1>";
+echo "<h1>AutoMarket - Database Setup</h1>";
 
 try {
     // Create database and tables

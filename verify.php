@@ -60,8 +60,8 @@ if (!empty($token)) {
             </a>
             
             <div class="nav-actions">
-                <a href="login.html" class="glass-button">Login</a>
-                <a href="register.html" class="glass-button primary">Register</a>
+                <a href="login.php" class="glass-button">Login</a>
+                <a href="register-simple.php" class="glass-button primary">Register</a>
             </div>
         </div>
     </nav>
@@ -93,14 +93,14 @@ if (!empty($token)) {
                     
                     <div class="verification-actions">
                         <?php if ($verified): ?>
-                            <a href="login.html" class="glass-button primary" style="padding: 1rem 2rem;">
+                            <a href="login.php" class="glass-button primary" style="padding: 1rem 2rem;">
                                 <i class="fas fa-sign-in-alt"></i> Login Now
                             </a>
                         <?php else: ?>
-                            <a href="register.html" class="glass-button" style="padding: 1rem 2rem; margin-right: 1rem;">
+                            <a href="register-simple.php" class="glass-button" style="padding: 1rem 2rem; margin-right: 1rem;">
                                 <i class="fas fa-user-plus"></i> Register Again
                             </a>
-                            <a href="login.html" class="glass-button primary" style="padding: 1rem 2rem;">
+                            <a href="login.php" class="glass-button primary" style="padding: 1rem 2rem;">
                                 <i class="fas fa-sign-in-alt"></i> Login
                             </a>
                         <?php endif; ?>

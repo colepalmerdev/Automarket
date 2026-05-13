@@ -143,6 +143,7 @@ usort($pending_approvals, function($a, $b) {
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/additional.css">
+    <link rel="stylesheet" href="../assets/css/admin-dashboard.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -168,7 +169,7 @@ usort($pending_approvals, function($a, $b) {
                     <i class="fas fa-moon"></i>
                 </button>
                 
-                <a href="../index.html" class="glass-button">
+                <a href="index.html" class="glass-button">
                     <i class="fas fa-home"></i> View Site
                 </a>
                 <a href="../logout.php" class="glass-button">
@@ -181,8 +182,23 @@ usort($pending_approvals, function($a, $b) {
     <!-- Admin Header -->
     <section class="admin-header">
         <div class="container">
-            <h1>Admin Dashboard</h1>
-            <p>Manage your automotive marketplace platform</p>
+            <div class="admin-breadcrumb">
+                <a href="dashboard.php" class="breadcrumb-item active">Dashboard</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">Overview</span>
+            </div>
+            <div class="admin-header-content">
+                <h1>Admin Dashboard</h1>
+                <p>Manage your automotive marketplace platform</p>
+                <div class="admin-header-actions">
+                    <button class="glass-button" onclick="refreshDashboard()">
+                        <i class="fas fa-sync-alt"></i> Refresh Data
+                    </button>
+                    <button class="glass-button primary" onclick="exportData()">
+                        <i class="fas fa-download"></i> Export Report
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -192,6 +208,15 @@ usort($pending_approvals, function($a, $b) {
             <!-- Stats Grid -->
             <div class="admin-stats-grid">
                 <div class="admin-stat-card glass-card animate-fadeInUp">
+                    <div class="skeleton-loader" id="stats-loader-1" style="display: none;">
+                        <div class="skeleton-header">
+                            <div class="skeleton-icon"></div>
+                            <div class="skeleton-content">
+                                <div class="skeleton-value"></div>
+                                <div class="skeleton-label"></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="stat-icon users">
                         <i class="fas fa-users"></i>
                     </div>
@@ -202,6 +227,15 @@ usort($pending_approvals, function($a, $b) {
                 </div>
                 
                 <div class="admin-stat-card glass-card animate-fadeInUp">
+                    <div class="skeleton-loader" id="stats-loader-2" style="display: none;">
+                        <div class="skeleton-header">
+                            <div class="skeleton-icon"></div>
+                            <div class="skeleton-content">
+                                <div class="skeleton-value"></div>
+                                <div class="skeleton-label"></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="stat-icon cars">
                         <i class="fas fa-car"></i>
                     </div>
@@ -212,6 +246,15 @@ usort($pending_approvals, function($a, $b) {
                 </div>
                 
                 <div class="admin-stat-card glass-card animate-fadeInUp">
+                    <div class="skeleton-loader" id="stats-loader-3" style="display: none;">
+                        <div class="skeleton-header">
+                            <div class="skeleton-icon"></div>
+                            <div class="skeleton-content">
+                                <div class="skeleton-value"></div>
+                                <div class="skeleton-label"></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="stat-icon rentals">
                         <i class="fas fa-calendar"></i>
                     </div>
@@ -222,6 +265,15 @@ usort($pending_approvals, function($a, $b) {
                 </div>
                 
                 <div class="admin-stat-card glass-card animate-fadeInUp">
+                    <div class="skeleton-loader" id="stats-loader-4" style="display: none;">
+                        <div class="skeleton-header">
+                            <div class="skeleton-icon"></div>
+                            <div class="skeleton-content">
+                                <div class="skeleton-value"></div>
+                                <div class="skeleton-label"></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="stat-icon bookings">
                         <i class="fas fa-clipboard-check"></i>
                     </div>
@@ -232,6 +284,15 @@ usort($pending_approvals, function($a, $b) {
                 </div>
                 
                 <div class="admin-stat-card glass-card animate-fadeInUp">
+                    <div class="skeleton-loader" id="stats-loader-5" style="display: none;">
+                        <div class="skeleton-header">
+                            <div class="skeleton-icon"></div>
+                            <div class="skeleton-content">
+                                <div class="skeleton-value"></div>
+                                <div class="skeleton-label"></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="stat-icon pending">
                         <i class="fas fa-clock"></i>
                     </div>
@@ -242,6 +303,15 @@ usort($pending_approvals, function($a, $b) {
                 </div>
                 
                 <div class="admin-stat-card glass-card animate-fadeInUp">
+                    <div class="skeleton-loader" id="stats-loader-6" style="display: none;">
+                        <div class="skeleton-header">
+                            <div class="skeleton-icon"></div>
+                            <div class="skeleton-content">
+                                <div class="skeleton-value"></div>
+                                <div class="skeleton-label"></div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="stat-icon revenue">
                         <i class="fas fa-dollar-sign"></i>
                     </div>
@@ -445,7 +515,7 @@ usort($pending_approvals, function($a, $b) {
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
-                <p>&copy; 2024 AutoMarket Pro. All rights reserved.</p>
+                <p>&copy; 2026 AutoMarket. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -513,289 +583,68 @@ usort($pending_approvals, function($a, $b) {
                 });
             }
         }
-    </script>
-    
-    <style>
-        .admin-header {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            padding: 6rem 0 3rem;
-            text-align: center;
-            margin-bottom: 3rem;
+        
+        // Refresh dashboard data
+        function refreshDashboard() {
+            showToast('Refreshing dashboard data...', 'info');
+            showSkeletonLoaders();
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
         }
         
-        .admin-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--secondary-color) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        // Show skeleton loaders when refreshing
+        function showSkeletonLoaders() {
+            const loaders = document.querySelectorAll('.skeleton-loader');
+            loaders.forEach(loader => {
+                loader.style.display = 'flex';
+            });
         }
         
-        .admin-stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-        
-        .admin-stat-card {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 1.5rem;
-        }
-        
-        .stat-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-        }
-        
-        .stat-icon.users { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .stat-icon.cars { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .stat-icon.rentals { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .stat-icon.bookings { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-        .stat-icon.pending { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
-        .stat-icon.revenue { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
-        
-        .stat-content {
-            flex: 1;
-        }
-        
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--secondary-color);
-            margin-bottom: 0.25rem;
-        }
-        
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .admin-dashboard-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 2rem;
-        }
-        
-        .admin-section-card {
-            padding: 2rem;
-        }
-        
-        .activities-list,
-        .approvals-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .activity-item,
-        .approval-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: var(--bg-tertiary);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .activity-item:hover,
-        .approval-item:hover {
-            background: var(--bg-secondary);
-        }
-        
-        .activity-icon,
-        .approval-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--secondary-color);
-            color: var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        
-        .approval-icon {
-            background: var(--glass-bg);
-            color: var(--text-primary);
-        }
-        
-        .activity-content,
-        .approval-content {
-            flex: 1;
-        }
-        
-        .activity-title,
-        .approval-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-        
-        .activity-meta,
-        .approval-meta {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-        
-        .activity-action,
-        .approval-actions {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .approval-actions .glass-button {
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
-        }
-        
-        .approval-actions .approve {
-            background: rgba(40, 167, 69, 0.1);
-            color: #28a745;
-            border-color: #28a745;
-        }
-        
-        .approval-actions .approve:hover {
-            background: #28a745;
-            color: white;
-        }
-        
-        .approval-actions .reject {
-            background: rgba(220, 53, 69, 0.1);
-            color: #dc3545;
-            border-color: #dc3545;
-        }
-        
-        .approval-actions .reject:hover {
-            background: #dc3545;
-            color: white;
-        }
-        
-        .no-activities,
-        .no-approvals {
-            text-align: center;
-            padding: 3rem;
-            color: var(--text-secondary);
-        }
-        
-        .no-activities i,
-        .no-approvals i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .quick-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        
-        .quick-action-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .quick-action-btn:hover {
-            background: var(--secondary-color);
-            color: var(--primary-color);
-            border-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-        
-        .quick-action-btn i {
-            font-size: 1.25rem;
-        }
-        
-        .quick-action-btn .badge {
-            position: absolute;
-            top: -0.5rem;
-            right: -0.5rem;
-            background: var(--accent-color);
-            color: white;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: bold;
-        }
-        
-        .system-status {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .status-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem;
-            background: var(--bg-tertiary);
-            border-radius: 8px;
-        }
-        
-        .status-label {
-            font-weight: 500;
-        }
-        
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-        }
-        
-        .status-indicator.online {
-            color: #28a745;
-        }
-        
-        .status-indicator.offline {
-            color: #dc3545;
-        }
-        
-        .status-indicator i {
-            font-size: 0.5rem;
-        }
-        
-        @media (max-width: 1024px) {
-            .admin-dashboard-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .admin-stats-grid {
-                grid-template-columns: 1fr;
+        // Hide skeleton loaders after page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const brandSelect = document.querySelector('select[name="brand"]');
+            if (brandSelect && brandSelect.value) {
+                updateModels(brandSelect.value);
             }
             
-            .quick-actions {
-                grid-template-columns: 1fr;
-            }
+            // Hide skeleton loaders after page loads
+            setTimeout(() => {
+                const loaders = document.querySelectorAll('.skeleton-loader');
+                loaders.forEach(loader => {
+                    loader.style.display = 'none';
+                });
+            }, 1500);
+        });
+        
+        // Export dashboard data
+        function exportData() {
+            showToast('Preparing export...', 'info');
+            
+            // Create CSV data for statistics
+            const csvContent = [
+                ['Metric', 'Value'],
+                ['Total Users', '<?php echo $stats['total_users']; ?>'],
+                ['Cars for Sale', '<?php echo $stats['total_cars']; ?>'],
+                ['Rental Cars', '<?php echo $stats['total_rentals']; ?>'],
+                ['Total Bookings', '<?php echo $stats['total_bookings']; ?>'],
+                ['Pending Approvals', '<?php echo $stats['pending_cars'] + $stats['pending_rentals']; ?>'],
+                ['Today\'s Revenue', '<?php echo formatPrice($stats['today_revenue']); ?>']
+            ].map(row => row.join(',')).join('\n');
+            
+            // Create download link
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'dashboard-export-' + new Date().toISOString().split('T')[0] + '.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            showToast('Dashboard data exported successfully!', 'success');
         }
-    </style>
+    </script>
 </body>
 </html>

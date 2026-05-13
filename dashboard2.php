@@ -1,4 +1,13 @@
-<?php
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AutoMarket</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body> -->
+<!--<?php
 require_once 'config/database.php';
 require_once 'includes/functions.php';
 
@@ -91,25 +100,26 @@ $stmt = $pdo->prepare("SELECT COUNT(*) as total FROM messages WHERE receiver_id 
 $stmt->execute([$user_id]);
 $stats['unread_messages'] = $stmt->fetch()['total'];
 ?>
-
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
+-->
+<!--<!DOCTYPE html>
+<html lang="en" data-theme="dark">-->
+<!--<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - AutoMarket Pro</title>
-    
-    <!-- Fonts -->
+-->
+    <!-- Fonts 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
+    -->
+    <!-- Font Awesome 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- CSS -->
+    -->
+    <!-- CSS 
     <link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-    <!-- Navigation -->
+</head>-->
+<!--
+<body>-->
+    <!-- Navigation 
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.php" class="logo">
@@ -120,7 +130,7 @@ $stats['unread_messages'] = $stmt->fetch()['total'];
             <ul class="nav-menu">
                 <li><a href="index.php" class="nav-link">Home</a></li>
                 <li><a href="browse-cars.php" class="nav-link">Buy Cars</a></li>
-                <li><a href="rentals.php" class="nav-link">Rentals</a></li>
+                <li><a href="rentals.php" class="nav-link">Rentals</a></li>-->
                 <?php if ($user_role === 'seller'): ?>
                     <li><a href="sell-car.php" class="nav-link">Sell Car</a></li>
                 <?php endif; ?>
@@ -128,7 +138,7 @@ $stats['unread_messages'] = $stmt->fetch()['total'];
                 <li><a href="contact.php" class="nav-link">Contact</a></li>
             </ul>
             
-            <div class="nav-actions">
+         <!--   <div class="nav-actions">
                 <button class="theme-toggle" id="theme-toggle">
                     <i class="fas fa-moon"></i>
                 </button>
@@ -166,16 +176,17 @@ $stats['unread_messages'] = $stmt->fetch()['total'];
             </div>
         </div>
     </nav>
+-->
 
-    <!-- Dashboard Content -->
+    <!-- Dashboard Content 
     <section class="dashboard-section">
         <div class="container">
             <div class="dashboard-header">
                 <h1>Welcome back, <?php echo htmlspecialchars($user['first_name']); ?>!</h1>
                 <p>Here's what's happening with your <?php echo ucfirst($user_role); ?> account</p>
             </div>
-
-            <!-- Stats Grid -->
+-->
+            <!-- Stats Grid 
             <div class="stats-grid">
                 <?php if ($user_role === 'seller'): ?>
                     <div class="stat-card glass-card animate-fadeInUp">
@@ -245,10 +256,10 @@ $stats['unread_messages'] = $stmt->fetch()['total'];
                     <div class="stat-label">Unread Messages</div>
                 </div>
             </div>
-
-            <!-- Main Dashboard Grid -->
-            <div class="dashboard-main-grid">
-                <!-- Recent Activity -->
+-->
+            <!-- Main Dashboard Grid 
+            <div class="dashboard-main-grid">-->
+                <!-- Recent Activity 
                 <div class="dashboard-section-card glass-card animate-fadeInUp">
                     <div class="card-header">
                         <h3>Recent Activity</h3>
@@ -330,7 +341,7 @@ $stats['unread_messages'] = $stmt->fetch()['total'];
                         <?php endif; ?>
                     </div>
                 </div>
-
+-->
                 <!-- Quick Actions -->
                 <div class="dashboard-section-card glass-card animate-fadeInUp">
                     <div class="card-header">
@@ -456,3 +467,4 @@ $stats['unread_messages'] = $stmt->fetch()['total'];
     </script>
 </body>
 </html>
+-->

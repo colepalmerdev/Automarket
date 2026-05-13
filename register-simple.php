@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 if ($result) {
                     // Registration successful - redirect to login
-                    header('Location: login.html');
+                    header('Location: login.php');
                     exit();
                 } else {
                     $errors[] = 'Registration failed. Please try again.';
@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </a>
             
             <div class="nav-actions">
-                <a href="login.html" class="glass-button">Login</a>
+                <a href="login.php" class="glass-button">Login</a>
                 <a href="register-simple.php" class="glass-button primary">Register</a>
                 <a href="dashboard.php" class="glass-button">
                     <i class="fas fa-tachometer-alt"></i> Dashboard
@@ -222,7 +222,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </form>
                     
                     <div class="auth-footer">
-                        <p>Already have an account? <a href="login.html">Login here</a></p>
+                        <p>Already have an account? <a href="login.php">Login here</a></p>
                     </div>
                 </div>
             </div>
