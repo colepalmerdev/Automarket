@@ -136,9 +136,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['book_now'])) {
                 </button>
                 
                 <?php if (isLoggedIn()): ?>
-                    <a href="dashboard.php" class="glass-button">
+                  <!--  <a href="admin/dashboard.php" class="glass-button">
                         <i class="fas fa-user"></i> Dashboard
-                    </a>
+                    </a>-->
                     <a href="logout.php" class="glass-button">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>

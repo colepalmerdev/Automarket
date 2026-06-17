@@ -27,7 +27,7 @@
             
             <div class="nav-actions">
                 <a href="register-simple.php" class="glass-button primary">Register</a>
-                <a href="dashboard.php" class="glass-button">
+                <a href="admin/dashboard.php" class="glass-button">
                     <i class="fas fa-tachometer-alt"></i> Dashboard
                 </a>
             </div>
@@ -128,7 +128,7 @@
                     ?>
                     
                     <!-- Login Form (Direct PHP Submission) -->
-                    <form method="post" action="login-direct.php">
+                    <form method="post" action="login.php">
                         <div class="form-group">
                             <label for="email" class="form-label">Email Address</label>
                             <div class="input-group">

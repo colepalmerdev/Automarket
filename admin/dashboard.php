@@ -182,7 +182,7 @@ usort($pending_approvals, function($a, $b) {
     <!-- Admin Header -->
     <section class="admin-header">
         <div class="container">
-            <div class="admin-breadcrumb">
+            <div class="admin-breadcrumb" style="margin-bottom: 20px;">
                 <a href="dashboard.php" class="breadcrumb-item active">Dashboard</a>
                 <span class="breadcrumb-separator">/</span>
                 <span class="breadcrumb-current">Overview</span>
@@ -194,7 +194,7 @@ usort($pending_approvals, function($a, $b) {
                     <button class="glass-button" onclick="refreshDashboard()">
                         <i class="fas fa-sync-alt"></i> Refresh Data
                     </button>
-                    <button class="glass-button primary" onclick="exportData()">
+                    <button  class="glass-button primary" onclick="exportData()" style="margin-left: 10px; background: linear-gradient(135deg, #4CAF50, #81C784); color: white;">
                         <i class="fas fa-download"></i> Export Report
                     </button>
                 </div>

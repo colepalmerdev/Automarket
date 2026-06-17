@@ -44,7 +44,7 @@ require_once 'includes/functions.php';
                 </button>
                 
                 <?php if (isLoggedIn()): ?>
-                    <a href="dashboard.php" class="glass-button">
+                    <a href="admin/dashboard.php" class="glass-button">
                         <i class="fas fa-user"></i> Dashboard
                     </a>
                     <a href="logout.php" class="glass-button">
@@ -52,7 +52,7 @@ require_once 'includes/functions.php';
                     </a>
                 <?php else: ?>
                     <a href="login.php" class="glass-button">Login</a>
-                    <a href="register.php" class="glass-button primary">Register</a>
+                    <a href="register-simple.php" class="glass-button primary">Register</a>
                 <?php endif; ?>
             </div>
         </div>

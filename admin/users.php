@@ -117,7 +117,7 @@ $users = $stmt->fetchAll();
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <div class="page-header-content">
+            <div class="page-header-content" style="text-align: center;" margin-bottom: 20px;" margin-top: 50px;">
                 <h1>Users Management</h1>
                 <p>Manage all registered users and their accounts</p>
             </div>
@@ -130,15 +130,15 @@ $users = $stmt->fetchAll();
             <!-- Search and Filters -->
             <div class="search-filters glass-card">
                 <form method="GET" class="search-form">
-                    <div class="search-row">
-                        <div class="form-group">
+                    <div class="search-row" >
+                        <div class="form-group" style="width: 100%;" margin-bottom: 50px;">
                             <input type="text" name="search" placeholder="Search users by name or email..." 
                                    value="<?php echo htmlspecialchars($search); ?>" class="form-input">
                         </div>
-                        <button type="submit" class="glass-button primary">
+                        <button type="submit" class="glass-button primary" style="background: linear-gradient(135deg, #4CAF50, #81C784); color: white;">
                             <i class="fas fa-search"></i> Search
                         </button>
-                        <a href="users.php" class="glass-button">
+                        <a href="users.php" class="glass-button" style="margin-left: 1000px;" >
                             <i class="fas fa-times"></i> Clear
                         </a>
                     </div>
@@ -147,7 +147,7 @@ $users = $stmt->fetchAll();
 
             <!-- Users Table -->
             <div class="table-container glass-card">
-                <table class="data-table">
+                <table class="data-table" style="width: 100%;" cellpadding="1" cellspacing="1" border="1">
                     <thead>
                         <tr>
                             <th>ID</th>
