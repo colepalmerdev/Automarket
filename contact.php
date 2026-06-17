@@ -31,12 +31,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     if (empty($errors)) {
-        // Here you would typically send an email or save to database
-        // For now, we'll just show a success message
-        $success_message = "Thank you for contacting us! We'll get back to you within 24 hours.";
-        
-        // Clear form
-        $name = $email = $phone = $subject = $message = '';
+        $site_email = getSetting('site_email', 'info@automarket.com');
+        $email_subject = "Contact Form Message: " . $subject;
+        $email_body = "<h2>New Contact Message</h2>" .
+            "<p><strong>Name:</strong> " . htmlspecialchars($name) . "</p>" .
+            "<p><strong>Email:</strong> " . htmlspecialchars($email) . "</p>" .
+            "<p><strong>Phone:</strong> " . htmlspecialchars($phone) . "</p>" .
+            "<p><strong>Subject:</strong> " . htmlspecialchars($subject) . "</p>" .
+            "<p><strong>Message:</strong></p><p>" . nl2br(htmlspecialchars($message)) . "</p>";
+
+        if (sendEmail($site_email, $email_subject, $email_body)) {
+            $success_message = "Thank you for contacting us! We'll get back to you within 24 hours.";
+            $name = $email = $phone = $subject = $message = '';
+        } else {
+            $errors[] = 'Unable to send your message right now. Please try again later.';
+        }
     }
 }
 ?>

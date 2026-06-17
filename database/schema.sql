@@ -16,8 +16,11 @@ CREATE TABLE users (
     role ENUM('buyer', 'seller', 'rental_customer', 'admin') DEFAULT 'buyer',
     profile_image VARCHAR(255),
     is_verified BOOLEAN DEFAULT FALSE,
+    verification_token VARCHAR(255),
     is_active BOOLEAN DEFAULT TRUE,
     remember_token VARCHAR(255),
+    password_reset_token VARCHAR(255),
+    password_reset_expires_at DATETIME DEFAULT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );

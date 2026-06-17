@@ -56,12 +56,166 @@ function generateToken($length = 32) {
     return bin2hex(random_bytes($length));
 }
 
-// Send email (placeholder function)
+function getSetting($key, $default = null) {
+    try {
+        $db = new Database();
+        $pdo = $db->getConnection();
+        if ($pdo === null) {
+            return $default;
+        }
+
+        $stmt = $pdo->prepare("SELECT setting_value FROM settings WHERE setting_key = ?");
+        $stmt->execute([$key]);
+        $setting = $stmt->fetch();
+
+        if ($setting && isset($setting['setting_value'])) {
+            return $setting['setting_value'];
+        }
+    } catch (Exception $e) {
+        // Ignore and return default
+    }
+
+    return $default;
+}
+
+function smtpSendEmail($to, $subject, $message, $fromName, $fromEmail, $smtpConfig = []) {
+    $smtp_host = $smtpConfig['host'] ?? getSetting('smtp_host', '');
+    $smtp_port = $smtpConfig['port'] ?? getSetting('smtp_port', '587');
+    $smtp_username = $smtpConfig['username'] ?? getSetting('smtp_username', '');
+    $smtp_password = $smtpConfig['password'] ?? getSetting('smtp_password', '');
+    $smtp_encryption = $smtpConfig['encryption'] ?? getSetting('smtp_encryption', 'tls');
+    $timeout = 30;
+
+    if (empty($smtp_host) || empty($smtp_username) || empty($smtp_password)) {
+        return false;
+    }
+
+    $remote = ($smtp_encryption === 'ssl' ? 'ssl://' : '') . $smtp_host . ':' . $smtp_port;
+    $socket = stream_socket_client($remote, $errno, $errstr, $timeout, STREAM_CLIENT_CONNECT);
+
+    if (!$socket) {
+        return false;
+    }
+
+    $getResponse = function() use ($socket) {
+        $response = '';
+        while ($line = fgets($socket, 515)) {
+            $response .= $line;
+            if (substr($line, 3, 1) === ' ') {
+                break;
+            }
+        }
+        return $response;
+    };
+
+    $sendCommand = function($command) use ($socket) {
+        fwrite($socket, $command . "\r\n");
+    };
+
+    $response = $getResponse();
+    if (substr($response, 0, 3) !== '220') {
+        fclose($socket);
+        return false;
+    }
+
+    $hostname = gethostname() ?: 'localhost';
+    $sendCommand("EHLO " . $hostname);
+    $response = $getResponse();
+    if ($smtp_encryption === 'tls') {
+        $sendCommand('STARTTLS');
+        $response = $getResponse();
+        if (substr($response, 0, 3) !== '220') {
+            fclose($socket);
+            return false;
+        }
+        stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+
+        $sendCommand("EHLO " . $hostname);
+        $response = $getResponse();
+    }
+
+    if (!empty($smtp_username) && !empty($smtp_password)) {
+        $sendCommand('AUTH LOGIN');
+        $response = $getResponse();
+        if (substr($response, 0, 3) !== '334') {
+            fclose($socket);
+            return false;
+        }
+
+        $sendCommand(base64_encode($smtp_username));
+        $response = $getResponse();
+        if (substr($response, 0, 3) !== '334') {
+            fclose($socket);
+            return false;
+        }
+
+        $sendCommand(base64_encode($smtp_password));
+        $response = $getResponse();
+        if (substr($response, 0, 3) !== '235') {
+            fclose($socket);
+            return false;
+        }
+    }
+
+    $sendCommand('MAIL FROM: <' . $fromEmail . '>');
+    $response = $getResponse();
+    if (substr($response, 0, 3) !== '250') {
+        fclose($socket);
+        return false;
+    }
+
+    $sendCommand('RCPT TO: <' . $to . '>');
+    $response = $getResponse();
+    if (!in_array(substr($response, 0, 3), ['250', '251'])) {
+        fclose($socket);
+        return false;
+    }
+
+    $sendCommand('DATA');
+    $response = $getResponse();
+    if (substr($response, 0, 3) !== '354') {
+        fclose($socket);
+        return false;
+    }
+
+    $headers = [];
+    $headers[] = 'From: ' . $fromName . ' <' . $fromEmail . '>';
+    $headers[] = 'Reply-To: ' . $fromEmail;
+    $headers[] = 'MIME-Version: 1.0';
+    $headers[] = 'Content-Type: text/html; charset=UTF-8';
+    $headers[] = 'Subject: ' . $subject;
+    $headers[] = 'To: ' . $to;
+
+    $body = implode("\r\n", $headers) . "\r\n\r\n";
+    $body .= str_replace('\n', "\r\n", $message);
+    $body .= "\r\n.\r\n";
+
+    fwrite($socket, $body);
+    $response = $getResponse();
+    if (substr($response, 0, 3) !== '250') {
+        fclose($socket);
+        return false;
+    }
+
+    $sendCommand('QUIT');
+    fclose($socket);
+    return true;
+}
+
 function sendEmail($to, $subject, $message) {
-    // In production, use actual email service
-    $headers = "From: noreply@automarketpro.com\r\n";
-    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-    return mail($to, $subject, $message, $headers);
+    $site_name = getSetting('site_name', 'AutoMarket');
+    $fromEmail = getSetting('site_email', 'noreply@automarketpro.com');
+    $fromName = $site_name;
+
+    $smtp_host = getSetting('smtp_host', '');
+    $smtp_username = getSetting('smtp_username', '');
+    $smtp_password = getSetting('smtp_password', '');
+
+    if (empty($smtp_host) || empty($smtp_username) || empty($smtp_password)) {
+        return false;
+    }
+
+    return smtpSendEmail($to, $subject, $message, $fromName, $fromEmail);
 }
 
 // Upload image

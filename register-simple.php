@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $terms = isset($_POST['terms']);
     
     $errors = [];
+    $success_message = '';
     
     // Basic validation
     if (empty($first_name) || empty($last_name) || empty($email) || empty($password)) {
@@ -50,23 +51,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 // Generate unique username
                 $username = explode('@', $email)[0] . '_' . time();
-                
-                // Create new user
                 $password_hash = password_hash($password, PASSWORD_DEFAULT);
+                $verification_token = generateToken();
                 
-                // Simple SQL without complex columns
-                $sql = "INSERT INTO users (first_name, last_name, email, phone, password_hash, role, username) 
-                        VALUES ('$first_name', '$last_name', '$email', '$phone', '$password_hash', '$role', '$username')";
+                $stmt = $pdo->prepare(
+                    "INSERT INTO users (first_name, last_name, email, phone, password_hash, role, username, verification_token, is_verified) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                );
                 
-                $result = $pdo->exec($sql);
+                $stmt->execute([$first_name, $last_name, $email, $phone, $password_hash, $role, $username, $verification_token, false]);
                 
-                if ($result) {
-                    // Registration successful - redirect to login
-                    header('Location: login.php');
-                    exit();
-                } else {
-                    $errors[] = 'Registration failed. Please try again.';
-                }
+                $verification_link = "http://localhost/cars/verify.php?token=" . $verification_token;
+                $email_subject = 'Verify your AutoMarket account';
+                $email_body = "<h2>Welcome to AutoMarket</h2>" .
+                    "<p>Hi " . htmlspecialchars($first_name) . ",</p>" .
+                    "<p>Thanks for registering. Please verify your email address by clicking the link below:</p>" .
+                    "<p><a href='" . $verification_link . "' style='display:inline-block;padding:12px 18px;background:#2563eb;color:#ffffff;text-decoration:none;border-radius:8px;'>Verify Email</a></p>" .
+                    "<p>If you did not request this, you can ignore this email.</p>";
+
+                sendEmail($email, $email_subject, $email_body);
+
+                $success_message = 'Registration successful! A verification email has been sent. Please verify your account before logging in.';
+                $first_name = $last_name = $email = $phone = '';
+                $role = 'buyer';
             }
         } catch(PDOException $e) {
             $errors[] = 'Database error: ' . $e->getMessage();
@@ -122,12 +128,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <p>Join AutoMarket and start your journey</p>
                     </div>
                     
-                    <!-- Error display -->
+                    <!-- Alert display -->
                     <?php if (!empty($errors)): ?>
                         <div class="alert alert-error">
                             <?php foreach ($errors as $error): ?>
                                 <p><?php echo htmlspecialchars($error); ?></p>
                             <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($success_message)): ?>
+                        <div class="alert alert-success">
+                            <p><?php echo htmlspecialchars($success_message); ?></p>
                         </div>
                     <?php endif; ?>
                     

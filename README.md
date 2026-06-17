@@ -18,6 +18,11 @@ A comprehensive full-stack car marketplace and rental booking website with a pre
 - **Rental Customer**: Browse and book rental cars
 - **Admin**: Manage users, approve listings, view analytics
 
+### Verification and Password Recovery
+- Email verification for new user registrations
+- Resend verification links for unverified accounts
+- Forgot password flow with expiring reset links
+
 ### Advanced Features
 - Advanced search and filtering system
 - Multi-step car listing form with image upload

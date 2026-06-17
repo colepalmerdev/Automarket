@@ -7,6 +7,13 @@ requireAdmin();
 $db = new Database();
 $pdo = $db->getConnection();
 
+// Load current settings before handling POST actions
+$settings_stmt = $pdo->query("SELECT setting_key, setting_value FROM settings");
+$settings = [];
+while ($row = $settings_stmt->fetch()) {
+    $settings[$row['setting_key']] = $row['setting_value'];
+}
+
 // Handle settings update
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
@@ -65,6 +72,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             
             $success_message = "Email settings updated successfully!";
+            break;
+        case 'test_smtp_settings':
+            $smtp_host = $_POST['smtp_host'] ?? '';
+            $smtp_port = $_POST['smtp_port'] ?? '';
+            $smtp_username = $_POST['smtp_username'] ?? '';
+            $smtp_password = $_POST['smtp_password'] ?? '';
+            $smtp_encryption = $_POST['smtp_encryption'] ?? '';
+            $test_email = $_POST['test_email'] ?? '';
+
+            if (!filter_var($test_email, FILTER_VALIDATE_EMAIL)) {
+                $error_message = 'Please provide a valid test email address.';
+            } else {
+                $smtpConfig = [
+                    'host' => $smtp_host,
+                    'port' => $smtp_port,
+                    'username' => $smtp_username,
+                    'password' => $smtp_password,
+                    'encryption' => $smtp_encryption
+                ];
+
+                $site_name = $settings['site_name'] ?? 'AutoMarket';
+                $fromEmail = $settings['site_email'] ?? 'noreply@automarketpro.com';
+                $fromName = $site_name;
+                $subject = 'SMTP Configuration Test';
+                $body = '<p>This is a test email to verify SMTP settings for AutoMarket.</p>';
+
+                if (smtpSendEmail($test_email, $subject, $body, $fromName, $fromEmail, $smtpConfig)) {
+                    $success_message = 'SMTP test email sent successfully to ' . htmlspecialchars($test_email) . '.';
+                } else {
+                    $error_message = 'SMTP test failed. Please verify your SMTP configuration.';
+                }
+            }
             break;
     }
 }
@@ -147,6 +186,13 @@ $smtp_encryption = $settings['smtp_encryption'] ?? 'tls';
                 <div class="alert alert-success">
                     <i class="fas fa-check-circle"></i>
                     <?php echo htmlspecialchars($success_message); ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if (isset($error_message)): ?>
+                <div class="alert alert-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <?php echo htmlspecialchars($error_message); ?>
                 </div>
             <?php endif; ?>
 
@@ -256,6 +302,24 @@ $smtp_encryption = $settings['smtp_encryption'] ?? 'tls';
                     
                     <button type="submit" class="glass-button primary">
                         <i class="fas fa-save"></i> Save Email Settings
+                    </button>
+                </form>
+
+                <form method="POST" class="settings-form" style="margin-top: 1rem;">
+                    <input type="hidden" name="action" value="test_smtp_settings">
+                    <input type="hidden" name="smtp_host" value="<?php echo htmlspecialchars($smtp_host); ?>">
+                    <input type="hidden" name="smtp_port" value="<?php echo htmlspecialchars($smtp_port); ?>">
+                    <input type="hidden" name="smtp_username" value="<?php echo htmlspecialchars($smtp_username); ?>">
+                    <input type="hidden" name="smtp_password" value="<?php echo htmlspecialchars($smtp_password); ?>">
+                    <input type="hidden" name="smtp_encryption" value="<?php echo htmlspecialchars($smtp_encryption); ?>">
+
+                    <div class="form-group">
+                        <label for="test_email" class="form-label">Test Email Address</label>
+                        <input type="email" id="test_email" name="test_email" class="form-input" placeholder="Enter email to test SMTP">
+                    </div>
+
+                    <button type="submit" class="glass-button secondary">
+                        <i class="fas fa-paper-plane"></i> Send SMTP Test Email
                     </button>
                 </form>
             </div>
